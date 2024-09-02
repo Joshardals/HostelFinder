@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { poppins } from "./fonts";
+import { lora, poppins } from "./fonts";
 import "./globals.css";
 import { Header } from "@/components/shared/Header";
 
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.variable}>
+      <body className={`${poppins.variable} ${lora.variable}`}>
         <Header />
         {children}
       </body>

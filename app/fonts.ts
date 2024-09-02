@@ -1,6 +1,13 @@
 // Fonts for the Site
 
-import { Poppins } from "next/font/google";
+import { Lora, Poppins } from "next/font/google";
+
+export const lora = Lora({
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
+  variable: "--font-lora",
+});
 
 export const poppins = Poppins({
   subsets: ["latin"],

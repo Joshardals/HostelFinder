@@ -19,11 +19,13 @@ const config: Config = {
         charcoal: "#333333", // For text, headers, and primary elements.
         blue: "#6AB5FF", // For buttons, links, and highlights.
         gray: "#F0F0F0", // For borders, backgrounds, and subtle elements.
-        navy: "#0056A0", // Accent Color for Logo.
+        royal: "#4169E1", // Accent Color.
+        cyan: "#00FFFF", // Favicon color
       },
 
       fontFamily: {
         poppins: ["var(--font-poppins)"],
+        lora: ["var(--font-lora)"],
       },
     },
   },

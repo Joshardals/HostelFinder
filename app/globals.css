@@ -24,6 +24,11 @@
   h3 {
     @apply text-[18px] md:text-[24px] leading-normal;
   }
+
+  .hover-effects {
+    @apply ease-in-out duration-200 transition-all;
+  }
+
   .max-content {
     @apply max-w-[1200px] mx-auto;
   }
