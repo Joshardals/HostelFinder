@@ -1,9 +1,13 @@
+import { FeaturedHostels } from "@/components/HomePage/FeaturedHostels";
 import { HeroSection } from "@/components/HomePage/HeroSection";
+import { HowItWorks } from "@/components/HomePage/HowItWorks";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="space-y-12 min-h-[200vh]">
       <HeroSection />
+      <FeaturedHostels />
+      <HowItWorks />
     </main>
   );
 }

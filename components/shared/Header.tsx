@@ -9,26 +9,28 @@ import { SidebarToggle } from "@/lib/store";
 export function Header() {
   const { open, setOpen } = SidebarToggle();
   return (
-    <header className="max-content max-lg:p-4 lg:py-4 grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center z-10">
-      <Logo />
-      <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
-        <NavLinks label="Find Hostels" href="#" />
-        <NavLinks label="About Us" href="#" />
-      </div>
-      <div className="justify-self-end flex items-center space-x-8 max-md:hidden">
-        <NavLinks label="Help" href="#" />
-        <NavLinks label="Contact Us" href="#" />
-      </div>
+    <header className="max-lg:p-4 lg:py-4 absolute right-0 left-0 bg-white w-full z-10">
+      <div className="max-content grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center">
+        <Logo />
+        <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
+          <NavLinks label="Find Hostels" href="#" />
+          <NavLinks label="About Us" href="#" />
+        </div>
+        <div className="justify-self-end flex items-center space-x-8 max-md:hidden">
+          <NavLinks label="Help" href="#" />
+          <NavLinks label="Contact Us" href="#" />
+        </div>
 
-      {/* Hamburger Menu */}
-      <div className="justify-self-end sm:hidden">
-        <RxHamburgerMenu
-          className="size-8 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        />
-      </div>
+        {/* Hamburger Menu */}
+        <div className="justify-self-end sm:hidden">
+          <RxHamburgerMenu
+            className="size-7 cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
 
-      <Sidebar />
+        {open && <Sidebar />}
+      </div>
     </header>
   );
 }
@@ -47,7 +49,7 @@ export function Sidebar() {
     <div className=" sm:hidden fixed right-0 top-0 bg-charcoal text-gray w-[20rem] h-full z-10 p-4">
       <div className="flex justify-end">
         <HiMiniXMark
-          className="size-8 cursor-pointer"
+          className="size-7 cursor-pointer"
           onClick={() => setOpen(!open)}
         />
       </div>
@@ -57,7 +59,7 @@ export function Sidebar() {
           <li key={index}>
             <Link
               href={item.href}
-              className="hover:text-royal hover-effects capitalize"
+              className=" hover:underline hover-effects capitalize"
             >
               {item.label}
             </Link>

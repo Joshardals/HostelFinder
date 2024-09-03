@@ -2,27 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
 @layer utilities {
   body {
-    @apply bg-white text-charcoal text-[16px] scroll-smooth font-poppins;
+    @apply bg-white text-charcoal text-[16px] scroll-smooth font-poppins overflow-x-hidden;
   }
 
   h1,
   h2,
   h3 {
-    @apply font-bold mb-6;
+    @apply font-bold mb-5;
   }
 
   h1 {
-    @apply text-[24px] md:text-[32px] leading-tight;
+    @apply text-[36px] md:text-[44px] leading-tight;
   }
 
   h2 {
-    @apply text-[20px] md:text-[28px] leading-snug;
+    @apply text-[24px] md:text-[32px] leading-tight;
   }
 
   h3 {
-    @apply text-[18px] md:text-[24px] leading-normal;
+    @apply text-[20px] md:text-[28px] leading-snug;
   }
 
   .hover-effects {
@@ -36,10 +42,42 @@
   .text-balance {
     text-wrap: balance;
   }
-}
 
-@layer base {
-  :root {
-    --radius: 0.5rem;
+  /* Styles for the Swiper Paginations Start */
+
+  .mySwiper .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    @apply bg-white opacity-30;
   }
+
+  .mySwiper .swiper-pagination-bullet-active {
+    @apply bg-white;
+  }
+
+  /* Styles for the Swiper Paginations End */
+
+  /* Styles for the Swiper Navigtions Start */
+
+  .mySwiper .swiper-button-next,
+  .mySwiper .swiper-button-prev {
+    @apply text-charcoal bg-white rounded-full w-[30px] h-[30px] text-[1px] font-bold hover:scale-105
+    opacity-0 transition-opacity duration-300;
+  }
+
+  .mySwiper .swiper-button-next::after,
+  .mySwiper .swiper-button-prev::after {
+    @apply text-[10px];
+  }
+
+  /* Show the buttons only when hovering over the Swiper container */
+  .mySwiper:hover .swiper-button-next,
+  .mySwiper:hover .swiper-button-prev {
+    @apply opacity-100 /* Show buttons on hover */;
+  }
+
+  /* Hide the button when it is disabled */
+  .mySwiper .swiper-button-disabled {
+    @apply hidden;
+  }
+
+  /* Styles for the Swiper Navigtions End */
 }
