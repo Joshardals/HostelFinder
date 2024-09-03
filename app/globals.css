@@ -35,6 +35,10 @@
     @apply ease-in-out duration-200 transition-all;
   }
 
+  .how-it-works-btn {
+    @apply border border-royal text-royal hover:bg-[#EDF2FD] px-4 py-2 rounded-xl font-bold;
+  }
+
   .max-content {
     @apply max-w-[1200px] mx-auto;
   }
@@ -43,6 +47,7 @@
     text-wrap: balance;
   }
 
+  /* Swiper Styles */
   /* Styles for the Swiper Paginations Start */
 
   .mySwiper .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {

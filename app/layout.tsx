@@ -1,3 +1,4 @@
+import { Footer } from "@/components/shared/Footer";
 import { Header } from "@/components/shared/Header";
 import { lora, poppins } from "./fonts";
 import type { Metadata } from "next";
@@ -22,8 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${lora.variable}`}>
-        <Header />
-        {children}
+        <div className="flex flex-col h-screen">
+          <Header />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

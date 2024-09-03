@@ -4,7 +4,7 @@ import { HowItWorks } from "@/components/HomePage/HowItWorks";
 
 export default function HomePage() {
   return (
-    <main className="space-y-12 min-h-[200vh]">
+    <main className="space-y-12 mb-12">
       <HeroSection />
       <FeaturedHostels />
       <HowItWorks />

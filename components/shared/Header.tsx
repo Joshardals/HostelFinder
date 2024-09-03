@@ -46,7 +46,7 @@ export function NavLinks({ label, href }: { label: string; href: string }) {
 export function Sidebar() {
   const { open, setOpen } = SidebarToggle();
   return (
-    <div className=" sm:hidden fixed right-0 top-0 bg-charcoal text-gray w-[20rem] h-full z-10 p-4">
+    <div className=" sm:hidden fixed right-0 top-0 bg-charcoal text-gray w-full h-full z-10 p-4">
       <div className="flex justify-end">
         <HiMiniXMark
           className="size-7 cursor-pointer"
@@ -55,13 +55,13 @@ export function Sidebar() {
       </div>
 
       <ul className="space-y-4">
-        {navlinks.map((item, index) => (
+        {navlinks.map((link, index) => (
           <li key={index}>
             <Link
-              href={item.href}
+              href={link.href}
               className=" hover:underline hover-effects capitalize"
             >
-              {item.label}
+              {link.label}
             </Link>
           </li>
         ))}
