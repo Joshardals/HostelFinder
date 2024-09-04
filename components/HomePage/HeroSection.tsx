@@ -1,4 +1,4 @@
-import { FaSearch } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
 
 export function HeroSection() {
@@ -22,9 +22,10 @@ export function HeroSection() {
               className="absolute top-0 right-0 h-full flex items-center px-6 cursor-pointer
           rounded-tr-xl rounded-br-xl bg-white hover:bg-[#EDF2FD] hover-effects"
             >
-              <FaSearch className="size-5 text-royal" />
+              <IoSearch className="size-5 text-royal" />
             </span>
           </form>
+
           <button
             type="button"
             className="transition-all duration-300 opacity-0 group-focus-within:opacity-100 bg-white px-4 py-3 md:w-[26rem] w-full rounded-xl flex items-center space-x-2"

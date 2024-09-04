@@ -62,7 +62,7 @@ function Card(card: CardType) {
       </div>
 
       {/* Medium Screens */}
-      <div className="max-md:hidden lg:hidden bg-white rounded-xl shadow-xl shadow-charcoal/50 w-full flex space-x-10 p-10">
+      <div className="max-md:hidden lg:hidden bg-white rounded-xl shadow-xl shadow-charcoal/30 w-full flex space-x-10 p-10">
         <div>
           <Image src={card.src} width={80} height={80} alt="Search" />
         </div>
