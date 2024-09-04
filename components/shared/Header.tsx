@@ -5,15 +5,16 @@ import { Logo } from "./Logo";
 import { navlinks } from "@/lib/data";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { SidebarToggle } from "@/lib/store";
+import { useEffect } from "react";
 
 export function Header() {
   const { open, setOpen } = SidebarToggle();
   return (
-    <header className="max-lg:p-4 lg:py-4 absolute right-0 left-0 bg-white w-full z-10">
+    <header className="max-lg:p-4 lg:py-4 fixed right-0 left-0 bg-white w-full z-10">
       <div className="max-content grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center">
         <Logo />
         <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
-          <NavLinks label="Find Hostels" href="#" />
+          <NavLinks label="Find Hostels" href="/find-hostels" />
           <NavLinks label="About Us" href="#" />
         </div>
         <div className="justify-self-end flex items-center space-x-8 max-md:hidden">
@@ -45,27 +46,46 @@ export function NavLinks({ label, href }: { label: string; href: string }) {
 
 export function Sidebar() {
   const { open, setOpen } = SidebarToggle();
-  return (
-    <div className=" sm:hidden fixed right-0 top-0 bg-charcoal text-gray w-full h-full z-10 p-4">
-      <div className="flex justify-end">
-        <HiMiniXMark
-          className="size-7 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        />
-      </div>
 
-      <ul className="space-y-4">
-        {navlinks.map((link, index) => (
-          <li key={index}>
-            <Link
-              href={link.href}
-              className=" hover:underline hover-effects capitalize"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
+  return (
+    <div
+      className=" sm:hidden fixed right-0 top-0 bg-black/50 text-gray w-full h-screen flex justify-end"
+      onClick={(e) => setOpen(!open)}
+    >
+      <div
+        className="p-4 bg-charcoal h-full w-1/2"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex justify-end">
+          <HiMiniXMark
+            className="size-7 cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+
+        <ul className="space-y-4">
+          {navlinks.map((link, index) => (
+            <li key={index}>
+              <Link
+                href={link.href}
+                className=" hover:underline hover-effects capitalize"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

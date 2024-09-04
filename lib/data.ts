@@ -31,7 +31,7 @@ export const howItWorksSteps = [
 ];
 
 export const navlinks = [
-  { label: "find hostels", href: "#" },
+  { label: "find hostels", href: "/find-hostels" },
   { label: "about us", href: "#" },
   { label: "help", href: "#" },
   { label: "contact us", href: "#" },
@@ -44,10 +44,14 @@ export const footerLinks = [
 ];
 
 export const footerSocialIcons = [
-  { label: "github", href: "#", src: "/images/footer/social-icon/github.png" },
+  {
+    label: "github",
+    href: "#",
+    src: "/images/homepage/footer/social-icon/github.png",
+  },
   {
     label: "linkedin",
     href: "#",
-    src: "/images/footer/social-icon/linkedin.png",
+    src: "/images/homepage/footer/social-icon/linkedin.png",
   },
 ];
