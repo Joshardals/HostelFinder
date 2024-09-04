@@ -1,11 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { GoDash } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { priceRange } from "@/lib/data";
+import { toNaira } from "@/lib/utils";
 
 export function PriceRange() {
   const [open, setOpen] = useState(false);
   const [minOpen, setMinOpen] = useState(false);
+  const [maxOpen, setMaxOpen] = useState(false);
+
   const [minSelected, setMinSelected] = useState<{
     label: string;
     value: number;
@@ -48,7 +52,13 @@ export function PriceRange() {
         onClick={handleClick}
       >
         <div className="flex items-center space-x-1 font-medium">
-          <span>{minSelected ? `${minSelected.label}+` : "Any Price"}</span>
+          <span>
+            {minSelected
+              ? minSelected.value === 0
+                ? toNaira(minSelected.value)
+                : `${toNaira(minSelected.value)}+`
+              : "Any Price"}
+          </span>
           {open ? (
             <IoIosArrowUp className="size-5" />
           ) : (
@@ -58,7 +68,7 @@ export function PriceRange() {
       </div>
 
       <div
-        className={`absolute bg-white p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 w-[20rem] ${
+        className={`absolute bg-white p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -66,24 +76,25 @@ export function PriceRange() {
       >
         <p className="text-charcoal/70 mb-1">Price Range</p>
 
-        <div
-          className={`px-2 py-2 ring-1 ring-charcoal/20 w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer
-            ${minOpen && "ring-1 ring-blue"}`}
-          onClick={() => setMinOpen(!minOpen)}
-        >
-          <span className="font-medium">
-            {minSelected ? minSelected.label : "No min"}
-          </span>
-          {minOpen ? (
-            <IoIosArrowUp className="size-5" />
-          ) : (
-            <IoIosArrowDown className="size-5" />
-          )}
+        {/* Can be reused */}
+        <div className="flex justify-between items-center space-x-4">
+          <Select
+            minOpen={minOpen}
+            setMinOpen={setMinOpen}
+            minSelected={minSelected}
+          />
+          <GoDash />
+          <Select
+            maxOpen={maxOpen}
+            setMaxOpen={setMaxOpen}
+            minSelected={minSelected}
+          />
         </div>
+        {/* Can be Reused */}
 
         <ul
           className={`absolute left-0 h-[20rem] w-full px-2 rounded-md mt-4 ring-1 ring-charcoal/20 overflow-auto hover-effects ${
-            minOpen
+            minOpen || maxOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }   `}
@@ -94,14 +105,62 @@ export function PriceRange() {
               className="px-4 py-2 hover-effects hover:bg-gray"
               onClick={() => {
                 setMinSelected(item);
-                setMinOpen(false);
+                if (minOpen) {
+                  setMinOpen(false);
+                } else {
+                  setMaxOpen(false);
+                }
               }}
             >
-              {item.label}
+              {index === 0 ? item.label : toNaira(item.value)}
             </li>
           ))}
         </ul>
       </div>
+    </div>
+  );
+}
+
+interface SelectProps {
+  minOpen?: boolean;
+  maxOpen?: boolean;
+  setMinOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setMaxOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  minSelected?: {
+    label: string;
+    value: number;
+  };
+}
+
+function Select({
+  minOpen,
+  maxOpen,
+  setMaxOpen,
+  setMinOpen,
+  minSelected,
+}: SelectProps) {
+  return (
+    <div
+      className={`px-2 py-2 ring-1 ring-charcoal/20 w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer
+  ${minOpen || maxOpen ? "ring-2 ring-blue" : null}`}
+      onClick={() => {
+        if (minOpen) {
+          setMinOpen(!minOpen);
+        }
+      }}
+    >
+      <span className="font-medium">
+        {minSelected
+          ? minSelected.value === 0
+            ? minSelected.label
+            : `${toNaira(minSelected.value)}`
+          : "No min"}
+      </span>
+      {minOpen ? (
+        <IoIosArrowUp className="size-5" />
+      ) : (
+        <IoIosArrowDown className="size-5" />
+      )}
     </div>
   );
 }
