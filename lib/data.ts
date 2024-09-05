@@ -28,13 +28,13 @@ export const howItWorksSteps = [
     buttonLabel: "Contact Now",
   },
 
-  {
-    label: "For Agents",
-    src: "/images/homepage/how-it-works/upload.png",
-    description:
-      "Agents will soon be able to upload and manage hostel listings. Stay tuned!",
-    buttonLabel: "Learn More",
-  },
+  // {
+  //   label: "For Agents",
+  //   src: "/images/homepage/how-it-works/upload.png",
+  //   description:
+  //     "Agents will soon be able to upload and manage hostel listings. Stay tuned!",
+  //   buttonLabel: "Learn More",
+  // }, Coming Soon
 ];
 
 // Everything Price Range

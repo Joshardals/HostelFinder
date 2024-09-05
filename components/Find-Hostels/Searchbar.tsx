@@ -3,7 +3,7 @@ import { IoSearch, IoLocationSharp } from "react-icons/io5";
 export function Searchbar() {
   return (
     <div className="group">
-      <form className="relative w-[22rem]">
+      <form className="relative max-lg:w-[10rem] lg:w-[22rem] ">
         <input
           type="text"
           placeholder="Campus, Neighborhood, City, Address"
@@ -20,7 +20,7 @@ export function Searchbar() {
 
       <button
         type="button"
-        className=" pointer-events-none  hover-effects opacity-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto bg-white shadow-md shadow-charcoal/20 absolute px-4 py-3 md:w-[22rem] w-full rounded-md flex items-center space-x-2 mt-2"
+        className=" pointer-events-none  hover-effects opacity-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto bg-white shadow-md shadow-charcoal/20 absolute px-4 py-3  md:w-[22rem] rounded-md flex items-center space-x-2 mt-2"
       >
         <IoLocationSharp className=" size-5" />
         <p>Current Location</p>

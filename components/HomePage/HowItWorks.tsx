@@ -7,7 +7,7 @@ export function HowItWorks() {
       <h2 className="capitalize text-center">how it works</h2>
       <div className="bg-gray">
         <div className="max-content max-lg:p-4 lg:py-4">
-          <div className="grid lg:grid-cols-4 gap-4">
+          <div className="grid lg:grid-cols-3 gap-4">
             {howItWorksSteps.map((step, index) => (
               <Card
                 key={index}
