@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { ratings } from "@/lib/data";
+import { useEffect, useRef, useState } from "react";
 
 export function RatingFilter() {
   const [open, setOpen] = useState(false);
@@ -32,8 +33,6 @@ export function RatingFilter() {
     setSelectedRating(rating);
     setOpen(false); // Close the dropdown after selection
   };
-
-  const ratings = [1, 2, 3, 4, 5]; // Possible ratings
 
   return (
     <div className="relative select-none" ref={divRef}>

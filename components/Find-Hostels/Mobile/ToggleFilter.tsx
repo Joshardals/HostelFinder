@@ -6,6 +6,7 @@ import { HiMiniXMark } from "react-icons/hi2";
 import { MobilePriceRange } from "./MobilePriceRange";
 import { useEffect } from "react";
 import { MobileRatingFilter } from "./MobileRatingFilter";
+import { MobileHostelTypeFilter } from "./MobileHostelTypeFilter";
 
 const filterData = [
   {
@@ -46,6 +47,7 @@ export function ToggleFilter() {
           <div className="space-y-4">
             <MobilePriceRange />
             <MobileRatingFilter />
+            <MobileHostelTypeFilter />
           </div>
         </div>
       </div>

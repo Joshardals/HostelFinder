@@ -1,4 +1,5 @@
 "use client";
+import { hostelTypes } from "@/lib/data";
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
@@ -36,8 +37,6 @@ export function HostelTypeFilter() {
           : [...prev, type] // Add type if not selected
     );
   };
-
-  const hostelTypes = ["Self Contain", "Room and Parlour", "2 Bedroom"];
 
   return (
     <div className="relative select-none" ref={divRef}>
