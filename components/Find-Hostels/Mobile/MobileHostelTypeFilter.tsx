@@ -19,7 +19,7 @@ export function MobileHostelTypeFilter() {
         {hostelTypes.map((type) => (
           <label
             key={type}
-            className="flex items-center space-x-2 p-1 cursor-pointer hover-effects hover:bg-gray"
+            className="flex items-center space-x-2 p-1 mb-1 cursor-pointer hover-effects hover:bg-gray"
           >
             <input
               type="checkbox"
