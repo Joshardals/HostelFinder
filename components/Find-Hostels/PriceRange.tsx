@@ -43,7 +43,7 @@ export function PriceRange() {
   return (
     <div className="relative select-none" ref={divRef}>
       <div
-        className={`ring-1 ring-charcoal/20 px-4 py-2 rounded-md cursor-pointer hover-effects ${
+        className={`max-w-[fit-content] ring-1 ring-charcoal/20 px-2 lg:px-4 py-2 rounded-md cursor-pointer hover-effects ${
           open ? "bg-charcoal/20 hover:bg-charcoal/20" : "hover:bg-charcoal/10"
         }`}
         onClick={handleClick}
@@ -81,12 +81,13 @@ export function PriceRange() {
         </div>
       </div>
 
+      {/* I added Hidden below */}
       <div
         className={`absolute bg-white p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+        } z-10`}
       >
         <p className="text-charcoal/70 mb-1">Price Range</p>
 

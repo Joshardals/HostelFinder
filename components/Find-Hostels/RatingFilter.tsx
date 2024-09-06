@@ -38,7 +38,7 @@ export function RatingFilter() {
   return (
     <div className="relative select-none" ref={divRef}>
       <div
-        className={`ring-1 ring-charcoal/20 px-4 py-2 rounded-md cursor-pointer hover-effects ${
+        className={`ring-1 w-[fit-content] ring-charcoal/20 px-2 lg:px-4 py-2 rounded-md cursor-pointer hover-effects ${
           open ? "bg-charcoal/20 hover:bg-charcoal/20" : "hover:bg-charcoal/10"
         }`}
         onClick={handleClick}
@@ -76,10 +76,11 @@ export function RatingFilter() {
           {ratings.map((rating) => (
             <li
               key={rating}
-              className="px-4 py-2 hover-effects hover:bg-gray cursor-pointer"
+              className="px-2 lg:px-4 py-2 hover-effects hover:bg-gray cursor-pointer"
               onClick={() => handleRatingSelect(rating)}
             >
-              {rating} {rating === 1 ? "Star" : "Stars"} and above
+              {rating} {rating === 1 ? "Star" : "Stars"}
+              {rating === 5 ? "" : " and above"}
             </li>
           ))}
         </ul>

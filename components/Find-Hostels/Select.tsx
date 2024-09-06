@@ -56,16 +56,20 @@ export function Select({
 
     // Set the selected item and close the dropdown
     setSelected(item);
-    setOpen(false);
+    if (setOpen) {
+      setOpen(false);
+    }
   };
   return (
     <div className="relative">
       <div
-        className={`px-2 py-2 ring-1 ring-charcoal/20 w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer ${
+        className={`px-2 py-2 ring-1 ring-charcoal/20 w-full md:w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer ${
           open ? "ring-2 ring-blue" : ""
         }`}
         onClick={() => {
-          setOpen(!open);
+          if (setOpen) {
+            setOpen(!open);
+          }
           setOtherOpen(false);
         }}
       >
@@ -88,7 +92,7 @@ export function Select({
       </div>
 
       <ul
-        className={`absolute left-0 h-[20rem] w-full px-2 rounded-md mt-4 ring-1 ring-charcoal/20 overflow-auto hover-effects transition-all duration-300 ease-in-out ${
+        className={`absolute left-0 h-[11rem] lg:h-[20rem] w-full px-2 rounded-md mt-4 ring-1 ring-charcoal/20 overflow-auto hover-effects transition-all duration-300 ease-in-out ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

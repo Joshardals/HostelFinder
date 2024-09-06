@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export function Header() {
   const { open, setOpen } = SidebarToggle();
   return (
-    <header className="max-lg:p-4 lg:py-4 fixed right-0 left-0 bg-white w-full z-10">
+    <header className="max-lg:p-4 lg:py-4 fixed right-0 left-0 w-full z-20">
       <div className="max-content grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center">
         <Logo />
         <div className="justify-self-center flex items-center space-x-8 max-md:hidden">

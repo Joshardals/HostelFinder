@@ -7,15 +7,20 @@ import { Searchbar } from "./Searchbar";
 export function FilterBar() {
   return (
     // max-lg:p-4 lg:py-4 bg-red-500
-    <div className="bg-red-500">
-      <div className="max-content space-x-4 max-lg:p-4 lg:py-4 flex lg:items-center max-lg:flex-col">
+    <section>
+      {/* Desktop Version  */}
+      <div className="max-md:hidden max-content space-x-4 py-4 flex items-center">
         <Searchbar />
+        <PriceRange />
+        <RatingFilter />
+        <HostelTypeFilter />
+
         {/* <p className="bg-orange-500">Hey</p> */}
         {/* <Searchbar /> */}
         {/* <PriceRange />
         <RatingFilter />
         <HostelTypeFilter /> */}
       </div>
-    </div>
+    </section>
   );
 }
