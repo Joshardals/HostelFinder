@@ -1,4 +1,4 @@
-export function ToggleButtons({ label, icon }: { label: string; icon: any }) {
+export function ToggleButton({ label, icon }: { label: string; icon: any }) {
   return (
     <button
       type="submit"

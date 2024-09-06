@@ -14,12 +14,6 @@ export function FilterBar() {
         <PriceRange />
         <RatingFilter />
         <HostelTypeFilter />
-
-        {/* <p className="bg-orange-500">Hey</p> */}
-        {/* <Searchbar /> */}
-        {/* <PriceRange />
-        <RatingFilter />
-        <HostelTypeFilter /> */}
       </div>
     </section>
   );

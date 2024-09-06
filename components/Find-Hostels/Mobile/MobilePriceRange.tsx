@@ -3,7 +3,6 @@ import { Select } from "../Select";
 import { GoDash } from "react-icons/go";
 
 export function MobilePriceRange() {
-  const [open, setOpen] = useState(false);
   const [minOpen, setMinOpen] = useState(false);
   const [maxOpen, setMaxOpen] = useState(false);
   const [maxSelected, setMaxSelected] = useState<{
@@ -20,7 +19,6 @@ export function MobilePriceRange() {
   useEffect(() => {
     function handleClickOutside(event: any) {
       if (divRef.current && !divRef.current.contains(event.target)) {
-        setOpen(false);
         setMinOpen(false);
         setMaxOpen(false);
       }
