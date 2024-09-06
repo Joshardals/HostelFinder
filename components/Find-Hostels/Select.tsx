@@ -63,7 +63,7 @@ export function Select({
   return (
     <div className="relative">
       <div
-        className={`px-2 py-2 ring-1 ring-charcoal/20 w-full md:w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer ${
+        className={`p-2 ring-1 ring-charcoal/20 w-full md:w-[8rem] hover-effects flex items-center justify-between space-x-1 rounded-md cursor-pointer ${
           open ? "ring-2 ring-royal" : ""
         }`}
         onClick={() => {
