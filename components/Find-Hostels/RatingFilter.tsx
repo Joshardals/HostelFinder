@@ -2,10 +2,11 @@
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { ratings } from "@/lib/data";
 import { useEffect, useRef, useState } from "react";
+import { useRatingFilter } from "@/lib/store";
 
 export function RatingFilter() {
   const [open, setOpen] = useState(false);
-  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const { selectedRating, setSelectedRating } = useRatingFilter();
 
   const divRef = useRef<HTMLDivElement | null>(null);
 

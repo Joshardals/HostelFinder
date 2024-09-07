@@ -1,11 +1,16 @@
+"use client";
 import { IoSearch, IoLocationSharp } from "react-icons/io5";
+import { useSearchQuery } from "@/lib/store";
 
 export function Searchbar() {
+  const { searchQuery, setSearchuery } = useSearchQuery();
   return (
     <div className="group">
       <form className="relative w-full lg:w-[22rem] ">
         <input
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchuery(e.target.value)}
           placeholder="Campus, Neighborhood, City, Address"
           className="outline-none border-none ring-1 ring-charcoal/20 w-full p-2 rounded-md hover:ring-1 hover:ring-royal focus:ring-2 focus:ring-blue "
         />

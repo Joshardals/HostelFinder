@@ -1,11 +1,12 @@
 "use client";
 import { hostelTypes } from "@/lib/data";
+import { useHostelType } from "@/lib/store";
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export function HostelTypeFilter() {
   const [open, setOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const { selectedTypes, setSelectedTypes } = useHostelType();
 
   const divRef = useRef<HTMLDivElement | null>(null);
 
@@ -49,12 +50,12 @@ export function HostelTypeFilter() {
         <div className="flex items-center space-x-2 font-medium">
           <span
             className={`size-3 rounded-full  ${
-              selectedTypes.length > 0 ? "bg-royal block" : "hidden"
+              selectedTypes!.length > 0 ? "bg-royal block" : "hidden"
             }`}
           />
           <span>
-            {selectedTypes.length > 0
-              ? `Hostel Type (${selectedTypes.length})`
+            {selectedTypes!.length > 0
+              ? `Hostel Type (${selectedTypes!.length})`
               : "All Hostel Type"}
           </span>
           {open ? (
@@ -81,7 +82,7 @@ export function HostelTypeFilter() {
             >
               <input
                 type="checkbox"
-                checked={selectedTypes.includes(type)}
+                checked={selectedTypes!.includes(type)}
                 onChange={() => handleTypeToggle(type)}
                 className="accent-royal"
               />

@@ -1,8 +1,8 @@
 import { ratings } from "@/lib/data";
-import { useState } from "react";
+import { useRatingFilter } from "@/lib/store";
 
 export function MobileRatingFilter() {
-  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const { selectedRating, setSelectedRating } = useRatingFilter();
 
   return (
     <div>
@@ -19,9 +19,7 @@ export function MobileRatingFilter() {
                 : "hover:bg-charcoal/20"
             }`}
             onClick={() => {
-              setSelectedRating((prevSelected) =>
-                prevSelected === rating ? null : rating
-              );
+              setSelectedRating(rating);
             }}
           >
             {rating}+

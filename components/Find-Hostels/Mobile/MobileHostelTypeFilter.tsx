@@ -1,8 +1,8 @@
 import { hostelTypes } from "@/lib/data";
-import { useState } from "react";
+import { useHostelType } from "@/lib/store";
 
 export function MobileHostelTypeFilter() {
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const { selectedTypes, setSelectedTypes } = useHostelType();
   const handleTypeToggle = (type: string) => {
     setSelectedTypes(
       (prev) =>
@@ -23,7 +23,7 @@ export function MobileHostelTypeFilter() {
           >
             <input
               type="checkbox"
-              checked={selectedTypes.includes(type)}
+              checked={selectedTypes!.includes(type)}
               onChange={() => handleTypeToggle(type)}
               className="accent-royal"
             />

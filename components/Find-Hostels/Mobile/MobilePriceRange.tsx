@@ -1,18 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Select } from "../Select";
 import { GoDash } from "react-icons/go";
+import { useFiltersStore } from "@/lib/store";
 
 export function MobilePriceRange() {
   const [minOpen, setMinOpen] = useState(false);
   const [maxOpen, setMaxOpen] = useState(false);
-  const [maxSelected, setMaxSelected] = useState<{
-    label: string;
-    value: number;
-  }>();
-  const [minSelected, setMinSelected] = useState<{
-    label: string;
-    value: number;
-  }>();
+  const { maxSelected, setMaxSelected } = useFiltersStore();
+  const { minSelected, setMinSelected } = useFiltersStore();
 
   const divRef = useRef<HTMLDivElement | null>(null);
 
@@ -40,9 +35,9 @@ export function MobilePriceRange() {
             open={minOpen}
             setOpen={setMinOpen}
             setOtherOpen={setMaxOpen}
-            selected={minSelected}
+            selected={minSelected!}
             setSelected={setMinSelected}
-            otherSelected={maxSelected}
+            otherSelected={maxSelected!}
           />
         </div>
         <GoDash />
@@ -52,9 +47,9 @@ export function MobilePriceRange() {
             open={maxOpen}
             setOpen={setMaxOpen}
             setOtherOpen={setMinOpen}
-            selected={maxSelected}
+            selected={maxSelected!}
             setSelected={setMaxSelected}
-            otherSelected={minSelected}
+            otherSelected={minSelected!}
           />
         </div>
       </div>

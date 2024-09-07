@@ -4,19 +4,14 @@ import { GoDash } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { toNaira } from "@/lib/utils";
 import { Select } from "./Select";
+import { useMaxSelected, useMinSelected, useFiltersStore } from "@/lib/store";
 
 export function PriceRange() {
   const [open, setOpen] = useState(false);
   const [minOpen, setMinOpen] = useState(false);
   const [maxOpen, setMaxOpen] = useState(false);
-  const [maxSelected, setMaxSelected] = useState<{
-    label: string;
-    value: number;
-  }>();
-  const [minSelected, setMinSelected] = useState<{
-    label: string;
-    value: number;
-  }>();
+  const { maxSelected, setMaxSelected } = useFiltersStore();
+  const { minSelected, setMinSelected } = useFiltersStore();
 
   function handleClick() {
     setOpen(!open);
@@ -97,9 +92,9 @@ export function PriceRange() {
             open={minOpen}
             setOpen={setMinOpen}
             setOtherOpen={setMaxOpen}
-            selected={minSelected}
+            selected={minSelected!}
             setSelected={setMinSelected}
-            otherSelected={maxSelected}
+            otherSelected={maxSelected!}
           />
           <GoDash />
           <Select
@@ -107,9 +102,9 @@ export function PriceRange() {
             open={maxOpen}
             setOpen={setMaxOpen}
             setOtherOpen={setMinOpen}
-            selected={maxSelected}
+            selected={maxSelected!}
             setSelected={setMaxSelected}
-            otherSelected={minSelected}
+            otherSelected={minSelected!}
           />
         </div>
       </div>
