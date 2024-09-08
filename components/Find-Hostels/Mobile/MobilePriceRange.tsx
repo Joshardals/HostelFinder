@@ -27,7 +27,7 @@ export function MobilePriceRange() {
 
   return (
     <div ref={divRef}>
-      <p className="text-charcoal/70 mb-1">Price</p>
+      <p className="mb-1">Price</p>
       <div className="flex justify-between items-center space-x-4">
         <div className="flex-1">
           <Select

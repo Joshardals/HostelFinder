@@ -38,7 +38,7 @@ export function Sorting() {
       </div>
 
       <div
-        className={`absolute bg-white w-[12rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ${
+        className={`absolute bg-white z-10 w-[12rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

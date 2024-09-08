@@ -1,22 +1,42 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { IoStar } from "react-icons/io5";
 
 export function HostelCard() {
   return (
-    <Swiper
-      slidesPerView={1}
-      pagination={true}
-      navigation={true}
-      speed={700}
-      modules={[Pagination, Navigation]}
-      className="mySwiper w-full rounded-xl"
-    >
-      <SwiperSlide className="w-full bg-black">
-        <div className="h-[15rem] max-sm:h-[25rem]">Hey</div>
-      </SwiperSlide>
-      <SwiperSlide className="w-full bg-black/90">Hey</SwiperSlide>
-      <SwiperSlide className="w-full bg-black/80">Hey</SwiperSlide>
-    </Swiper>
+    <div className="space-y-2">
+      <Swiper
+        slidesPerView={1}
+        pagination={true}
+        navigation={true}
+        speed={700}
+        modules={[Pagination, Navigation]}
+        className="mySwiper w-full rounded-xl"
+      >
+        {Array.from({ length: 3 }).map((_, index) => (
+          <SwiperSlide className=" bg-black" key={index}>
+            <div className={`h-[15rem] max-sm:h-[25rem] text-gray `}>Hey</div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="space-y-1">
+        <div className="flex items-center justify-between">
+          <p className="font-bold text-charcoal">₦300,000/yr</p>
+          <div className="flex items-center space-x-1">
+            <span>
+              <IoStar />
+            </span>
+            <span>4.5</span>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm">Hope's Apartment</p>
+          <p className="text-sm">Self Contain</p>
+          <p className="text-sm">LASU-Iba Road, Ojo, Lagos</p>
+        </div>
+      </div>
+    </div>
   );
 }

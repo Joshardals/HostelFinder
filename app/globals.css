@@ -31,6 +31,10 @@
     @apply text-[20px] md:text-[28px] leading-snug;
   }
 
+  p {
+    @apply text-charcoal/70;
+  }
+
   .hover-effects {
     @apply ease-in-out duration-200 transition-all;
   }

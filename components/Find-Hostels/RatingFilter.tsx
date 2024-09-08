@@ -52,7 +52,7 @@ export function RatingFilter() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <p className="text-charcoal/70 mb-2">Star Rating</p>
+        <p className="mb-2">Star Rating</p>
         <ul
           className={`grid grid-cols-5  border-y border-l border-l-charcoal/20 border-y-charcoal/20`}
         >

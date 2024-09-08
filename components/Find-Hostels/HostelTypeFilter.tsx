@@ -59,7 +59,7 @@ export function HostelTypeFilter() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <p className="text-charcoal/70 mb-2">Type of Hostel</p>
+        <p className="mb-2">Type of Hostel</p>
         <div className="space-y-1">
           {hostelTypes.map((type) => (
             <label

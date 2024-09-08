@@ -8,10 +8,10 @@ export default function HostelPage() {
       <FilterBar />
       <ToggleFilter />
       <div className="lg:grid lg:grid-cols-3 lg:gap-4 max-content max-sm:px-4">
-        <div className=" col-span-2 pt-[4.5rem]">
+        <div className=" col-span-2 py-[4.5rem]">
           <Hostelcontainer />
         </div>
-        <div className="bg-royal w-full max-sm:hidden">Map</div>
+        <div className="w-full max-sm:hidden">Map</div>
       </div>
     </main>
   );

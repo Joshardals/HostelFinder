@@ -14,7 +14,7 @@ export function MobileHostelTypeFilter() {
 
   return (
     <div>
-      <p className="text-charcoal/70 mb-1">Type of Hostel</p>
+      <p className="mb-1">Type of Hostel</p>
       <div>
         {hostelTypes.map((type) => (
           <label

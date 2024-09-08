@@ -48,7 +48,7 @@ function Card(card: CardType) {
 
           <div className="text-center">
             <h3 className="text-pretty">{card.label}</h3>
-            <p className="text-charcoal/70 text-pretty h-[7rem]">
+            <p className="text-pretty h-[7rem]">
               {card.description}
             </p>
           </div>
@@ -69,7 +69,7 @@ function Card(card: CardType) {
 
         <div>
           <h3 className="text-pretty mb-1">{card.label}</h3>
-          <p className="text-charcoal/70 text-pretty mb-4">
+          <p className="text-pretty mb-4">
             {card.description}
           </p>
 

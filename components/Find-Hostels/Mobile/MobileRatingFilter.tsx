@@ -6,7 +6,7 @@ export function MobileRatingFilter() {
 
   return (
     <div>
-      <p className="text-charcoal/70 mb-1">Star Rating</p>
+      <p className="mb-1">Star Rating</p>
       <ul className="grid grid-cols-5 border-y border-l border-l-charcoal/20 border-y-charcoal/20 rounded-md">
         {ratings.map((rating) => (
           <li

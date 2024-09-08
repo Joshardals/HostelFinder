@@ -33,7 +33,7 @@ export function ToggleFilter() {
     };
   }, [filterOpen]);
   return (
-    <section className=" p-4 md:hidden fixed left-0 right-0 bg-white z-10">
+    <section className=" p-4 md:hidden fixed left-0 right-0 bg-white z-20">
       <div className="flex items-center justify-between relative">
         {filterData.map((item, index) => (
           <div
