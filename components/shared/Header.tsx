@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export function Header() {
   const { open, setOpen } = SidebarToggle();
   return (
-    <header className="max-lg:p-4 lg:py-4 fixed right-0 left-0 w-full z-20 bg-white">
+    <header className="max-lg:p-4 lg:py-2 bg-white fixed right-0 left-0 w-full z-20">
       <div className="max-content grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center">
         <Logo />
         <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
@@ -30,7 +30,7 @@ export function Header() {
           />
         </div>
 
-        {open && <Sidebar />}
+        <Sidebar />
       </div>
     </header>
   );
@@ -59,8 +59,12 @@ export function Sidebar() {
 
   return (
     <div
-      className=" sm:hidden fixed right-0 top-0 bg-black/50 text-gray w-full h-screen flex justify-end"
-      onClick={(e) => setOpen(!open)}
+      className={`sm:hidden fixed right-0 top-0 bg-black/50 text-gray w-full h-screen flex justify-end hover-effects ${
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
+      onClick={() => setOpen(!open)}
     >
       <div
         className="p-4 bg-charcoal h-full w-1/2"

@@ -27,7 +27,7 @@ export function ToggleFilter() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [filterOpen]);
   return (
     <section className=" p-4 md:hidden">
       <div className="flex items-center justify-between relative">
@@ -75,7 +75,7 @@ export function ToggleFilter() {
         >
           <button
             type="button"
-            className="text-center bg-royal text-white p-2 w-full rounded-md"
+            className="text-center bg-royal text-gray p-2 w-full rounded-md"
           >
             View Hostels
           </button>

@@ -7,11 +7,11 @@ export default function HostelPage() {
     <main>
       <FilterBar />
       <ToggleFilter />
-      <div className="grid grid-cols-3 items-center max-content">
+      <div className="lg:grid lg:grid-cols-3 lg:gap-4 items-center max-content max-sm:px-4">
         <div className=" col-span-2">
           <Hostelcontainer />
         </div>
-        {/* <div className="bg-royal w-full">Map</div> */}
+        <div className="bg-royal w-full max-sm:hidden">Map</div>
       </div>
     </main>
   );

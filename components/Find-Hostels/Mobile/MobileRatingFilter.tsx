@@ -22,7 +22,8 @@ export function MobileRatingFilter() {
               setSelectedRating(rating);
             }}
           >
-            {rating}+
+            {rating}
+            {rating !== 5 && "+"}
           </li>
         ))}
       </ul>

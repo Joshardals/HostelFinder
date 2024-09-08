@@ -7,7 +7,6 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export function Sorting() {
   const [open, setOpen] = useState(false);
-  const [pendingSort, setPendingSort] = useState<string | null>(null);
   const { selectedSort, setSelectedSort } = useFiltersStore();
 
   const divRef = useRef<HTMLDivElement | null>(null);

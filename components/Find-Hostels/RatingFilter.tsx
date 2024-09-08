@@ -16,11 +16,6 @@ export function RatingFilter() {
     setOpen(!open);
   };
 
-  const handleRatingSelect = (rating: number) => {
-    setSelectedRating(rating);
-    setOpen(false); // Close the dropdown after selection
-  };
-
   return (
     <div className="relative select-none" ref={divRef}>
       <div
@@ -37,9 +32,9 @@ export function RatingFilter() {
           />
           <span>
             {selectedRating !== null
-              ? `${selectedRating} ${
-                  selectedRating === 1 ? "Star" : "Stars"
-                } and above`
+              ? `${selectedRating} ${selectedRating === 1 ? "Star" : "Stars"} ${
+                  selectedRating !== 5 ? "and above" : ""
+                }`
               : "Any Rating"}
           </span>
           {open ? (
@@ -51,7 +46,7 @@ export function RatingFilter() {
       </div>
 
       <div
-        className={`absolute rounded-md bg-white shadow-md shadow-charcoal/20 p-2  w-[15rem] mt-1 ${
+        className={`absolute rounded-md bg-white shadow-md shadow-charcoal/20 p-2  w-[17rem] mt-1 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -75,7 +70,8 @@ export function RatingFilter() {
                 setSelectedRating(rating);
               }}
             >
-              {rating}+
+              {rating}
+              {rating !== 5 && "+"}
             </li>
           ))}
         </ul>
