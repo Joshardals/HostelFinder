@@ -22,14 +22,18 @@ const filterData = [
 export function ToggleFilter() {
   const [filterOpen, setFilterOpen] = useState(false);
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (filterOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [filterOpen]);
   return (
-    <section className=" p-4 md:hidden">
+    <section className=" p-4 md:hidden fixed left-0 right-0 bg-white z-10">
       <div className="flex items-center justify-between relative">
         {filterData.map((item, index) => (
           <div

@@ -5,7 +5,7 @@ import { Searchbar } from "./Searchbar";
 
 export function FilterBar() {
   return (
-    <section>
+    <section className="fixed left-0 right-0 bg-white z-20">
       {/* Desktop Version  */}
       <div className="max-content">
         <div className="max-md:hidden space-x-4 py-4 flex items-center">
