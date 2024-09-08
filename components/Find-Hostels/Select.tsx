@@ -28,6 +28,14 @@ export function Select({
   otherSelected,
 }: SelectProps) {
   const handleSelection = (item: { label: string; value: number }) => {
+    // Handle the "No Min" and "No Max" case by resetting the state to null
+    if (item.value === 0) {
+      setSelected(null); // Reset to null for no filtering on this side
+      if (setOpen) {
+        setOpen(false); // Close dropdown after selection
+      }
+      return;
+    }
     // If No Max is selected, consider it a valid range
     if (
       type === "min" &&

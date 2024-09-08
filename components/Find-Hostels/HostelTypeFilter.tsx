@@ -1,12 +1,12 @@
 "use client";
 import { hostelTypes } from "@/lib/data";
-import { useHostelType } from "@/lib/store";
 import { useEffect, useRef, useState } from "react";
+import { useFiltersStore } from "@/lib/store";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export function HostelTypeFilter() {
   const [open, setOpen] = useState(false);
-  const { selectedTypes, setSelectedTypes } = useHostelType();
+  const { selectedTypes, setSelectedTypes } = useFiltersStore();
 
   const divRef = useRef<HTMLDivElement | null>(null);
 
@@ -32,9 +32,9 @@ export function HostelTypeFilter() {
 
   const handleTypeToggle = (type: string) => {
     setSelectedTypes(
-      (prev) =>
+      (prev: any) =>
         prev.includes(type)
-          ? prev.filter((t) => t !== type) // Remove type if already selected
+          ? prev.filter((t: any) => t !== type) // Remove type if already selected
           : [...prev, type] // Add type if not selected
     );
   };

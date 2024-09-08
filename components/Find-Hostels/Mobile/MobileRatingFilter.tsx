@@ -1,8 +1,8 @@
 import { ratings } from "@/lib/data";
-import { useRatingFilter } from "@/lib/store";
+import { useFiltersStore } from "@/lib/store";
 
 export function MobileRatingFilter() {
-  const { selectedRating, setSelectedRating } = useRatingFilter();
+  const { selectedRating, setSelectedRating } = useFiltersStore();
 
   return (
     <div>

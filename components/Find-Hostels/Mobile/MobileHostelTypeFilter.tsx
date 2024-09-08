@@ -1,13 +1,13 @@
 import { hostelTypes } from "@/lib/data";
-import { useHostelType } from "@/lib/store";
+import { useFiltersStore } from "@/lib/store";
 
 export function MobileHostelTypeFilter() {
-  const { selectedTypes, setSelectedTypes } = useHostelType();
+  const { selectedTypes, setSelectedTypes } = useFiltersStore();
   const handleTypeToggle = (type: string) => {
     setSelectedTypes(
-      (prev) =>
+      (prev: any) =>
         prev.includes(type)
-          ? prev.filter((t) => t !== type) // Remove type if already selected
+          ? prev.filter((t: any) => t !== type) // Remove type if already selected
           : [...prev, type] // Add type if not selected
     );
   };

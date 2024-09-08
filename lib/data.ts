@@ -74,3 +74,31 @@ export const priceRange = [
 
 export const ratings = [1, 2, 3, 4, 5]; // Possible ratings
 export const hostelTypes = ["Self Contain", "Room and Parlour", "2 Bedroom"];
+
+// Sorting Data
+export const sortingData = [
+  {
+    label: "Price (Lo-Hi)",
+    value: "price-asc",
+  },
+  {
+    label: "Price (Hi-Lo)",
+    value: "price-desc",
+  },
+  {
+    label: "Rating (Highest)",
+    value: "rating-desc",
+  },
+  {
+    label: "Rating (Lowest)",
+    value: "rating-asc",
+  },
+  {
+    label: "Date (Newest)",
+    value: "date-desc",
+  },
+  {
+    label: "Date (Oldest)",
+    value: "date-asc",
+  },
+];

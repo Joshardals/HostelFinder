@@ -4,7 +4,7 @@ import { GoDash } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { toNaira } from "@/lib/utils";
 import { Select } from "./Select";
-import { useMaxSelected, useMinSelected, useFiltersStore } from "@/lib/store";
+import { useFiltersStore } from "@/lib/store";
 
 export function PriceRange() {
   const [open, setOpen] = useState(false);

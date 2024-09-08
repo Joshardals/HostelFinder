@@ -1,9 +1,9 @@
 "use client";
 import { IoSearch, IoLocationSharp } from "react-icons/io5";
-import { useSearchQuery } from "@/lib/store";
+import { useFiltersStore } from "@/lib/store";
 
 export function Searchbar() {
-  const { searchQuery, setSearchuery } = useSearchQuery();
+  const { searchQuery, setSearchuery } = useFiltersStore();
   return (
     <div className="group">
       <form className="relative w-full lg:w-[22rem] ">
