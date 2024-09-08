@@ -4,6 +4,7 @@ import { GoDash } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { toNaira } from "@/lib/utils";
 import { Select } from "./Select";
+import { useClickOutside } from "@/lib/hooks";
 import { useFiltersStore } from "@/lib/store";
 
 export function PriceRange() {
@@ -20,20 +21,7 @@ export function PriceRange() {
   }
 
   const divRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (divRef.current && !divRef.current.contains(event.target)) {
-        setOpen(false);
-        setMinOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [divRef]);
+  useClickOutside(divRef, () => setOpen(false)); // Hook for handling click outside.
 
   return (
     <div className="relative select-none" ref={divRef}>

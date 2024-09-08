@@ -1,19 +1,63 @@
 "use client";
 import { sortingData } from "@/lib/data";
-import { useState } from "react";
+import { useClickOutside } from "@/lib/hooks";
+import { useFiltersStore } from "@/lib/store";
+import { useEffect, useRef, useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export function Sorting() {
   const [open, setOpen] = useState(false);
+  const [pendingSort, setPendingSort] = useState<string | null>(null);
+  const { selectedSort, setSelectedSort } = useFiltersStore();
+
+  const divRef = useRef<HTMLDivElement | null>(null);
+  useClickOutside(divRef, () => setOpen(false)); // Hook for handling click outside.
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  const handleSort = (item: { label: string; value: string }) => {
+    setSelectedSort(item.label);
+    setOpen(!open);
+  };
+
   return (
-    <div className="relative">
-      <div className="ring-1 w-[fit-content] ring-charcoal/20 rounded-md cursor-pointer px-2 lg:px-4 py-2">
-        Sort: <span className="text-royal">Date (Newest)</span>
+    <div className="relative select-none w-[fit-content]" ref={divRef}>
+      <div
+        className=" w-[fit-content] rounded-md cursor-pointer flex items-center space-x-2"
+        onClick={handleClick}
+      >
+        <span className="text-sm text-royal">
+          Sort: <span>{selectedSort}</span>
+        </span>
+        {open ? (
+          <IoIosArrowUp className="size-5 text-royal" />
+        ) : (
+          <IoIosArrowDown className="size-5 text-royal" />
+        )}
       </div>
 
-      <div>
-        {sortingData.map((item, index) => (
-          <div key={index}>{item.label}</div>
-        ))}
+      <div
+        className={`absolute bg-white w-[12rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ${
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <ul className="">
+          {sortingData.map((item, index) => (
+            <li
+              key={index}
+              className={`px-2 lg:px-4 py-2 hover-effects rounded-md cursor-pointer ${
+                item.label === selectedSort ? "text-royal" : "hover:bg-gray"
+              }`}
+              onClick={() => handleSort(item)}
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

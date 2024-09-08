@@ -3,7 +3,6 @@ import { IoSearch } from "react-icons/io5";
 import { PriceRange } from "./PriceRange";
 import { RatingFilter } from "./RatingFilter";
 import { Searchbar } from "./Searchbar";
-import { Sorting } from "./Sorting";
 
 export function FilterBar() {
   return (
@@ -17,7 +16,6 @@ export function FilterBar() {
           <RatingFilter />
           <HostelTypeFilter />
         </div>
-        <Sorting />
       </div>
     </section>
   );

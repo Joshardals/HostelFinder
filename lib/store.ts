@@ -1,12 +1,6 @@
 import { create } from "zustand";
 import { SidebarState } from "@/typings";
-import {
-  MaxSelectedState,
-  MinSelectedState,
-  RatingFilterState,
-  SearchQueryState,
-  SelectedTypeState,
-} from "@/typings/filters";
+import { FiltersState } from "@/typings/filters";
 
 export const SidebarToggle = create<SidebarState>((set) => ({
   open: null,
@@ -18,6 +12,7 @@ export const useFiltersStore = create<FiltersState>((set) => ({
   maxSelected: null,
   minSelected: null,
   selectedRating: null,
+  selectedSort: "Date (Newest)",
   selectedTypes: [],
   searchQuery: "",
 
@@ -28,9 +23,10 @@ export const useFiltersStore = create<FiltersState>((set) => ({
     set((state) => ({
       selectedRating: state.selectedRating === rating ? null : rating,
     })),
+  setSelectedSort: (selectedSort) => set({ selectedSort }),
   setSelectedTypes: (updateFn) =>
     set((state) => ({
       selectedTypes: updateFn(state.selectedTypes ?? []),
     })),
-  setSearchuery: (searchQuery) => set(() => ({ searchQuery })),
+  setSearchQuery: (searchQuery) => set(() => ({ searchQuery })),
 }));

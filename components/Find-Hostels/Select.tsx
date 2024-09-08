@@ -11,7 +11,7 @@ interface SelectProps {
     label: string;
     value: number;
   };
-  setSelected: (value: { label: string; value: number }) => void;
+  setSelected: (value: { label: string; value: number } | null) => void;
   otherSelected?: {
     label: string;
     value: number;

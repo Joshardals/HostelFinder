@@ -2,6 +2,7 @@
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { ratings } from "@/lib/data";
 import { useEffect, useRef, useState } from "react";
+import { useClickOutside } from "@/lib/hooks";
 import { useFiltersStore } from "@/lib/store";
 
 export function RatingFilter() {
@@ -9,22 +10,7 @@ export function RatingFilter() {
   const { selectedRating, setSelectedRating } = useFiltersStore();
 
   const divRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (divRef.current && !divRef.current.contains(event.target)) {
-        setOpen(false); // Set the state to false when clicking outside
-      }
-    }
-
-    // Add the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [divRef]);
+  useClickOutside(divRef, () => setOpen(false)); // Hook for handling click outside.
 
   const handleClick = () => {
     setOpen(!open);
@@ -65,22 +51,31 @@ export function RatingFilter() {
       </div>
 
       <div
-        className={`absolute bg-white p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 w-[13rem] ${
+        className={`absolute rounded-md bg-white shadow-md shadow-charcoal/20 p-2  w-[15rem] mt-1 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
         <p className="text-charcoal/70 mb-2">Star Rating</p>
-        <ul className="space-y-1">
+        <ul
+          className={`grid grid-cols-5  border-y border-l border-l-charcoal/20 border-y-charcoal/20`}
+        >
           {ratings.map((rating) => (
             <li
               key={rating}
-              className="px-2 lg:px-4 py-2 hover-effects hover:bg-gray cursor-pointer"
-              onClick={() => handleRatingSelect(rating)}
+              className={`px-4 py-2 text-center border-r border-r-charcoal/20 cursor-pointer hover-effects  ${
+                rating === 5 && "rounded-tr-md rounded-br-md"
+              } ${rating === 1 && "rounded-tl-md rounded-bl-md"} ${
+                rating === selectedRating
+                  ? "bg-royal text-gray"
+                  : "hover:bg-charcoal/20"
+              }`}
+              onClick={() => {
+                setSelectedRating(rating);
+              }}
             >
-              {rating} {rating === 1 ? "Star" : "Stars"}
-              {rating === 5 ? "" : " and above"}
+              {rating}+
             </li>
           ))}
         </ul>

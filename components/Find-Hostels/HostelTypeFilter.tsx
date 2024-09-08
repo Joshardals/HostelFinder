@@ -1,30 +1,16 @@
 "use client";
 import { hostelTypes } from "@/lib/data";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useFiltersStore } from "@/lib/store";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useClickOutside } from "@/lib/hooks";
 
 export function HostelTypeFilter() {
   const [open, setOpen] = useState(false);
   const { selectedTypes, setSelectedTypes } = useFiltersStore();
 
   const divRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (divRef.current && !divRef.current.contains(event.target)) {
-        setOpen(false); // Set the state to false when clicking outside
-      }
-    }
-
-    // Add the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [divRef]);
+  useClickOutside(divRef, () => setOpen(false)); // Hook for handling click outside.
 
   const handleClick = () => {
     setOpen(!open);
