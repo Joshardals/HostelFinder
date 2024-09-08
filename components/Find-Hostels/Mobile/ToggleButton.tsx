@@ -6,8 +6,8 @@ export function ToggleButton({ label, icon }: { label: string; icon: any }) {
 
   const getSelectedFiltersCount = () => {
     let count = 0;
-    if (maxSelected !== null && maxSelected !== 0) count++;
-    if (minSelected !== null && minSelected !== 0) count++;
+    if (maxSelected !== null && maxSelected.value !== 0) count++;
+    if (minSelected !== null && minSelected.value !== 0) count++;
     if (selectedRating !== null) count++;
     if (selectedTypes && selectedTypes.length > 0) {
       count += selectedTypes.length;
