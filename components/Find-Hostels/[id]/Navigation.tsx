@@ -7,8 +7,9 @@ export default function Navigation() {
       href="/find-hostels"
       className="hover-effects decoration-royal text-royal font-medium hover:underline flex items-center space-x-2 w-[fit-content]"
     >
-      <FaArrowLeftLong className="" />
-      <span className="text-sm">Back to Hostels</span>
+      <FaArrowLeftLong />
+      <span className="text-sm max-sm:hidden">Back to Hostels</span>
+      <span className="text-sm sm:hidden">Hostels</span>
     </Link>
   );
 }

@@ -1,8 +1,13 @@
 import { create } from "zustand";
-import { SidebarState } from "@/typings";
+import { HostelDetailsState, SidebarState } from "@/typings";
 import { FiltersState } from "@/typings/filters";
 
 export const SidebarToggle = create<SidebarState>((set) => ({
+  open: null,
+  setOpen: (open) => set(() => ({ open })),
+}));
+
+export const HostelDetailsToggle = create<HostelDetailsState>((set) => ({
   open: null,
   setOpen: (open) => set(() => ({ open })),
 }));

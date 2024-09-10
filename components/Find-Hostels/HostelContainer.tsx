@@ -1,9 +1,13 @@
+"use client";
+import { HostelDetailsToggle } from "@/lib/store";
 import { HostelCard } from "../shared/HostelCard";
+import { HostelDetails } from "./HostelDetails";
 import { Sorting } from "./Sorting";
 
 export function Hostelcontainer() {
+  const { open, setOpen } = HostelDetailsToggle();
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 relative">
       <div className="flex items-center justify-between">
         <Sorting />
         <p> 1,000 rentals</p>
@@ -14,6 +18,9 @@ export function Hostelcontainer() {
           <HostelCard key={index} />
         ))}
       </div>
+
+      {/* Hostel Details PopUp */}
+      <HostelDetails />
     </section>
   );
 }
