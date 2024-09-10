@@ -4,7 +4,7 @@ import { ToggleFilter } from "@/components/Find-Hostels/Mobile/ToggleFilter";
 
 export default function HostelPage() {
   return (
-    <main className="">
+    <main>
       <FilterBar />
       <ToggleFilter />
       <div className="lg:grid lg:grid-cols-3 lg:gap-4 max-content max-sm:px-4">
