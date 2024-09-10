@@ -34,7 +34,7 @@ export function HostelCard() {
             </div>
           </div>
           <div>
-            <p className="text-sm">John&apos; Apartment</p>
+            <p className="text-sm">John&apos;s Apartment</p>
             <p className="text-sm">Self Contain</p>
             <p className="text-sm">LASU-Iba Road, Ojo, Lagos</p>
           </div>
