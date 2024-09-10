@@ -8,7 +8,11 @@ export default function HostelDetailsPage({
   return (
     <main>
       <div className="max-content max-sm:px-4 py-4">
-        <Navigation />
+        <div className="max-sm:hidden">
+          <Navigation />
+        </div>
+
+        <div></div>
       </div>
     </main>
   );

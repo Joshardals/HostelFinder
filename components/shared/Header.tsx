@@ -6,13 +6,25 @@ import { navlinks } from "@/lib/data";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { SidebarToggle } from "@/lib/store";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Navigation from "../Find-Hostels/[id]/Navigation";
 
 export function Header() {
   const { open, setOpen } = SidebarToggle();
+  const pathname = usePathname();
+  const isHostelDetail = pathname.startsWith("/find-hostels/");
+
   return (
-    <header className="max-lg:p-4 lg:py-2 fixed bg-white right-0 left-0 w-full z-30">
-      <div className="max-content grid grid-cols-2 sm:grid-cols-3 sm:gap-4 items-center">
-        <Logo />
+    <header className="max-lg:p-4 lg:py-2 fixed bg-white top-0 right-0 left-0 w-full z-30">
+      <div className="max-content grid grid-cols-3 sm:grid-cols-3 sm:gap-4 items-center">
+        <div className="sm:hidden">
+          <Navigation />
+        </div>
+
+        <div className="max-sm:justify-self-center">
+          <Logo />
+        </div>
+
         <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
           <NavLinks label="Find Hostels" href="/find-hostels" />
           <NavLinks label="About Us" href="#" />
