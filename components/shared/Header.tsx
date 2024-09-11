@@ -8,6 +8,7 @@ import { SidebarToggle } from "@/lib/store";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Navigation from "../Find-Hostels/[id]/Navigation";
+import { useLockBodyScroll } from "@/lib/hooks";
 
 export function Header() {
   const { open, setOpen } = SidebarToggle();
@@ -63,15 +64,7 @@ export function NavLinks({ label, href }: { label: string; href: string }) {
 export function Sidebar() {
   const { open, setOpen } = SidebarToggle();
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+  useLockBodyScroll(open); // An hook to lock the body scroll
 
   return (
     <div

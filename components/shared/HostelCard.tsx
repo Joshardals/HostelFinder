@@ -1,3 +1,5 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { IoStar } from "react-icons/io5";
@@ -7,7 +9,7 @@ export function HostelCard() {
     // <Link href="/find-hostels/12345" passHref legacyBehavior>
     //   <a className="space-y-2" target="_blank" rel="noopener noreferrer">
 
-    <div className="space-y-2 bg-red-500">
+    <div className="space-y-2 rounded-xl">
       <Swiper
         slidesPerView={1}
         pagination={true}

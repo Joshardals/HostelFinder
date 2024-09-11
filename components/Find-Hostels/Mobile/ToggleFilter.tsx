@@ -7,6 +7,7 @@ import { MobilePriceRange } from "./MobilePriceRange";
 import { useEffect, useState } from "react";
 import { MobileRatingFilter } from "./MobileRatingFilter";
 import { MobileHostelTypeFilter } from "./MobileHostelTypeFilter";
+import { useLockBodyScroll } from "@/lib/hooks";
 
 const filterData = [
   {
@@ -21,17 +22,8 @@ const filterData = [
 
 export function ToggleFilter() {
   const [filterOpen, setFilterOpen] = useState(false);
-  useEffect(() => {
-    if (filterOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  useLockBodyScroll(filterOpen); // An hook to lock the body scroll
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [filterOpen]);
   return (
     <section className=" p-4 md:hidden fixed left-0 right-0 bg-white z-20">
       <div className="flex items-center justify-between relative">
@@ -77,10 +69,7 @@ export function ToggleFilter() {
               : "opacity-0 pointer-events-none"
           }`}
         >
-          <button
-            type="button"
-            className="text-center bg-royal text-gray p-2 w-full rounded-md"
-          >
+          <button type="button" className="btn">
             View Hostels
           </button>
         </div>

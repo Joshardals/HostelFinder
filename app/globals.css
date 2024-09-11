@@ -35,12 +35,27 @@
     @apply text-charcoal/70;
   }
 
+  /* Used this in the Contact Form and ToggleFilter Component */
+  .btn {
+    @apply text-center bg-royal text-gray p-2 w-full rounded-md;
+  }
+
+  /* Used this in my Contact Form */
+  .errorMessage {
+    @apply text-xs text-red-500;
+  }
+
   .hover-effects {
     @apply ease-in-out duration-200 transition-all;
   }
 
   .how-it-works-btn {
     @apply border border-royal text-royal hover:bg-[#EDF2FD] px-4 py-2 rounded-xl font-bold;
+  }
+
+  /* Used this in the ContactForm Component */
+  .input {
+    @apply p-4 w-full outline-none border-none ring-1 ring-charcoal/20 rounded-md  focus:ring-2 focus:ring-blue mb-2;
   }
 
   .max-content {
