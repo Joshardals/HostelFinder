@@ -17,7 +17,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-xl shadow-md shadow-charcoal/20 p-4 *:text-charcoal *:text-sm space-y-4"
+      className="rounded-xl shadow-md shadow-charcoal/20 p-4 *:text-charcoal *:text-sm space-y-4 h-auto"
     >
       <span className="font-medium capitalize">contact the owner</span>
 
@@ -102,6 +102,13 @@ export function ContactForm() {
         >
           Check Availability
         </button>
+
+        <span className="text-xs text-charcoal/70">
+          By reaching out about this property, you agree to our terms and
+          conditions. The information provided is for reference only, and the
+          availability of the hostel is subject to admin confirmation. We may
+          follow up with you regarding your inquiry.
+        </span>
       </div>
     </form>
   );
