@@ -27,7 +27,7 @@ export function HostelCard() {
 
       <div className="space-y-1">
         <div className="flex items-center justify-between">
-          <p className="font-bold text-charcoal">₦300,000/yr</p>
+          <p className="font-medium text-charcoal">₦300,000/yr</p>
           <div className="flex items-center space-x-1">
             <span>
               <IoStar />

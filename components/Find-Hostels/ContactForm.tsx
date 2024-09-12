@@ -19,15 +19,15 @@ export function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="rounded-xl shadow-md shadow-charcoal/20 p-4 *:text-charcoal *:text-sm space-y-4"
     >
-      <span className="font-medium text-sm capitalize">contact the owner</span>
+      <span className="font-medium capitalize">contact the owner</span>
 
       <div>
         <span className="font-medium capitalize">John Okoro</span>
         <p>0806 123 4567</p>
       </div>
 
-      <div className="grid gap-4">
-        <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <div>
             <input
               className="input"
@@ -55,6 +55,7 @@ export function ContactForm() {
                 },
               })}
             />
+
             {errors.phone?.message && (
               <p className="errorMessage">{String(errors.phone.message)}</p>
             )}
@@ -75,7 +76,7 @@ export function ContactForm() {
             })}
           />
           {errors.email?.message && (
-            <p className="text-red-600">{String(errors.email.message)}</p>
+            <p className="errorMessage">{String(errors.email.message)}</p>
           )}
         </div>
 
@@ -84,12 +85,14 @@ export function ContactForm() {
             title="Message"
             placeholder="Message"
             className="input"
+            value="I am interested in this hostel and would like to schedule a viewing. Please let me know when this would be possible."
             {...register("message", {
               required: "Please enter your message.",
             })}
           />
+
           {errors.message?.message && (
-            <p className="text-red-600">{String(errors.message.message)}</p>
+            <p className="errorMessage">{String(errors.message.message)}</p>
           )}
         </div>
 

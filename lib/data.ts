@@ -1,3 +1,5 @@
+import { FaBed } from "react-icons/fa";
+
 export const navlinks = [
   { label: "find hostels", href: "/find-hostels" },
   { label: "about us", href: "#" },

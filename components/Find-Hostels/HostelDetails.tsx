@@ -8,7 +8,13 @@ export function HostelDetails() {
   useLockBodyScroll(open); // An hook to lock the body scroll
 
   return (
-    <div className="fixed top-0 left-0 bg-black/50 h-full w-full z-[60]">
+    <div
+      className={`fixed top-0 left-0 bg-black/50 h-full w-full z-[60] hover-effects ${
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
+    >
       <div className="bg-white sm:w-[65rem] max-content h-full overflow-auto">
         <HostelGallery />
 

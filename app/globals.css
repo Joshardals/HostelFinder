@@ -31,6 +31,10 @@
     @apply text-[20px] md:text-[28px] leading-snug;
   }
 
+  h4 {
+    @apply text-[18px] md:text-[24px] leading-snug;
+  }
+
   p {
     @apply text-charcoal/70;
   }
@@ -42,7 +46,7 @@
 
   /* Used this in my Contact Form */
   .errorMessage {
-    @apply text-xs text-red-500;
+    @apply text-xs text-red-500 mt-2;
   }
 
   .hover-effects {
@@ -55,7 +59,7 @@
 
   /* Used this in the ContactForm Component */
   .input {
-    @apply p-4 w-full outline-none border-none ring-1 ring-charcoal/20 rounded-md  focus:ring-2 focus:ring-blue mb-2;
+    @apply p-4 w-full outline-none border-none ring-1 ring-charcoal/20 rounded-md  focus:ring-2 focus:ring-blue;
   }
 
   .max-content {

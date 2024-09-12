@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     "Discover affordable hostels near Lagos State University. Browse verified listings, view detailed information, and find your ideal accommodation today on HostelFinder",
 };
 
+// Trying to make sure the screen doesn't zoom in.
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: "0",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
