@@ -1,10 +1,12 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { HostelDetailsToggle } from "@/lib/store";
 import { IoStar } from "react-icons/io5";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export function HostelCard() {
+  const { open, setOpen } = HostelDetailsToggle();
   return (
     // <Link href="/find-hostels/12345" passHref legacyBehavior>
     //   <a className="space-y-2" target="_blank" rel="noopener noreferrer">
@@ -25,7 +27,7 @@ export function HostelCard() {
         ))}
       </Swiper>
 
-      <div className="space-y-1">
+      <div className="space-y-1 cursor-pointer" onClick={() => setOpen(!open)}>
         <div className="flex items-center justify-between">
           <p className="font-medium text-charcoal">₦300,000/yr</p>
           <div className="flex items-center space-x-1">

@@ -2,10 +2,11 @@ import { useLockBodyScroll } from "@/lib/hooks";
 import { HostelDetailsToggle } from "@/lib/store";
 import { HostelGallery } from "./HostelGallery";
 import { HostelInfo } from "./HostelInfo";
+import { HostelDetailsHeader } from "./HostelDetailsHeader";
 
 export function HostelDetails() {
   const { open, setOpen } = HostelDetailsToggle();
-  useLockBodyScroll(open); // An hook to lock the body scroll
+  useLockBodyScroll(open); // An hook to lock the body scroll whenever open is true
 
   return (
     <div
@@ -14,11 +15,19 @@ export function HostelDetails() {
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
       }`}
+      onClick={() => setOpen(!open)}
     >
-      <div className="bg-white sm:w-[65rem] max-content h-full overflow-auto">
-        <HostelGallery />
+      <div
+        className=" w-full lg:max-w-[65rem] bg-white mx-auto h-full overflow-auto relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <HostelDetailsHeader />
 
-        <HostelInfo />
+        <div className=" -mt-16">
+          <HostelGallery />
+
+          <HostelInfo />
+        </div>
       </div>
     </div>
   );

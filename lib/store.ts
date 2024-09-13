@@ -8,7 +8,7 @@ export const SidebarToggle = create<SidebarState>((set) => ({
 }));
 
 export const HostelDetailsToggle = create<HostelDetailsState>((set) => ({
-  open: true,
+  open: null,
   setOpen: (open) => set(() => ({ open })),
 }));
 
