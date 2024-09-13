@@ -11,11 +11,12 @@ export function HostelHighlights() {
   return (
     <div className="p-4 ring-1 ring-charcoal/20 rounded-xl">
       <span className="font-medium text-[18px]">Hostel Highlights</span>
-      <div className="grid grid-cols-2 gap-4 mt-4">
+      <div className="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-4 mt-4">
         <Highlights
           icon={FaTint}
           label="Water Supply"
-          content="Regular borehole water"
+          //   content="Regular borehole water"
+          content="Borehole"
         />
         <Highlights icon={FaBolt} label="Electricity" content="Prepaid Meter" />
         {/* Shared/Private are the only options for the kitchen  */}
@@ -42,12 +43,12 @@ function Highlights({
   content: string | number;
 }) {
   return (
-    <div className="grid grid-cols-3 items-center justify-between">
+    <div className="grid grid-cols-2 lg:grid-cols-3 items-center justify-between">
       <div className="flex items-center space-x-2">
         <Icon className="text-charcoal/70" />
         <span>{label}</span>
       </div>
-      <span className="font-medium col-span-2">{content}</span>
+      <span className="font-medium lg:col-span-2">{content}</span>
     </div>
   );
 }

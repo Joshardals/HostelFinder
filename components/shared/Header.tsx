@@ -16,11 +16,11 @@ export function Header() {
   const isHostelDetail = pathname.startsWith("/find-hostels/");
 
   return (
-    <header className="max-lg:p-4 lg:py-2 fixed bg-white top-0 right-0 left-0 w-full z-30">
+    <header className="max-[1200px]:p-4 lg:py-2 fixed bg-white top-0 right-0 left-0 w-full z-30">
       <div
         className={`max-content grid ${
           isHostelDetail ? "grid-cols-3" : "grid-cols-2"
-        } sm:grid-cols-3 sm:gap-4 items-center`}
+        } md:grid-cols-3 md:gap-4 items-center`}
       >
         <div className={`sm:hidden ${!isHostelDetail && "hidden"}`}>
           <Navigation />
@@ -40,7 +40,7 @@ export function Header() {
         </div>
 
         {/* Hamburger Menu */}
-        <div className="justify-self-end sm:hidden">
+        <div className="justify-self-end md:hidden">
           <RxHamburgerMenu
             className="size-7 cursor-pointer"
             onClick={() => setOpen(!open)}
@@ -68,7 +68,7 @@ export function Sidebar() {
 
   return (
     <div
-      className={`sm:hidden fixed right-0 top-0 bg-black/50 text-gray w-full h-screen flex justify-end hover-effects ${
+      className={`md:hidden fixed right-0 top-0 bg-black/50 text-gray w-full h-screen flex justify-end hover-effects ${
         open
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"

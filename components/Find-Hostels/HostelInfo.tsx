@@ -9,17 +9,25 @@ import { HostelHighlights } from "./HostelHighlights";
 export function HostelInfo() {
   return (
     <div>
-      <div className="lg:grid lg:grid-cols-3 lg:gap-4 p-4 ">
+      <div className=" max-lg:space-y-4 lg:grid lg:grid-cols-3 lg:gap-4 p-4 ">
         <div className="col-span-2">
-          <div className="grid grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-3 gap-4 mb-2 lg:mb-4">
             <div className="col-span-2">
-              <h3 className="font-medium mb-2">John&apos;s Apartment</h3>
-              <Ratings />
-              <p className="text-charcoal">LASU-Iba Road, Ojo, Lagos</p>
-              <p className="">Self Contain</p>
+              <h3 className="font-medium mb-0">John&apos;s Apartment</h3>
+              <p className="sm:hidden max-sm:mb-2 font-medium">
+                LASU-Iba Road, Ojo, Lagos
+              </p>
+              <h3 className="font-medium mb-0 sm:hidden">₦300,000/yr</h3>
+              <div>
+                <Ratings />
+              </div>
+              <p className="font-medium max-sm:hidden">
+                LASU-Iba Road, Ojo, Lagos
+              </p>
+              <p className="font-medium">Self Contain</p>
             </div>
 
-            <h3 className="font-medium mb-0">₦300,000/yr</h3>
+            <h3 className="font-medium mb-0 max-sm:hidden">₦300,000/yr</h3>
           </div>
 
           {/* Rooms, Bathrooms, Square Feets */}
@@ -30,7 +38,7 @@ export function HostelInfo() {
           <HostelInfoMap />
 
           {/* Description */}
-          <div>
+          <div className="max-lg:mb-8">
             <span className="font-medium text-[18px]">Description</span>
 
             {/* Contact Information */}
