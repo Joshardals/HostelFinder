@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${lora.variable}`}>
         <div className="flex flex-col h-screen">
           <Header />
-          <div className="flex-1 max-md:pt-14 lg:pt-[3.4rem]">{children}</div>
+          <div className="flex-1 max-lg:pt-14 lg:pt-[3.4rem]">{children}</div>
           {/* <Footer /> */}
         </div>
       </body>

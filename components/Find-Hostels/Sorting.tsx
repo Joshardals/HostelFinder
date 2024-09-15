@@ -44,7 +44,7 @@ export function Sorting() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <ul className="">
+        <ul>
           {sortingData.map((item, index) => (
             <li
               key={index}

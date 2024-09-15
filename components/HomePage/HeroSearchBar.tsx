@@ -1,31 +1,29 @@
 "use client";
-import { ChangeEvent, useRef, useState } from "react";
-import { IoSearch, IoLocationSharp } from "react-icons/io5";
-import { predefinedLocation } from "@/lib/data";
+import { IoSearch } from "react-icons/io5";
 import { useFiltersStore } from "@/lib/store";
-import { useClickOutside, useLocationSearch } from "@/lib/hooks";
+import { useLocationSearch } from "@/lib/hooks";
 
-export function Searchbar() {
+export function HeroSearchBar() {
   const { searchQuery, setSearchQuery } = useFiltersStore();
   const { filteredLocations, handleChange, handleSuggestionClick, divRef } =
     useLocationSearch(searchQuery, setSearchQuery);
 
   return (
     <div ref={divRef}>
-      <form className="relative w-full lg:w-[22rem]">
+      <form className="relative md:w-[26rem] max-sm:w-full mb-2">
         <input
           type="text"
           value={searchQuery}
           onChange={handleChange}
-          placeholder="Campus, Neighborhood, City, Address"
-          className="outline-none border-none ring-1 ring-charcoal/20 w-full p-2 rounded-md hover:ring-1 hover:ring-royal focus:ring-2 focus:ring-blue "
+          placeholder="Enter a campus, neighborhood, or city..."
+          className="outline-none border-none w-full p-4 rounded-xl hover:ring-1 hover:ring-royal focus:ring-2 focus:ring-blue "
         />
 
         <span
-          className="absolute top-0 right-0 h-full flex items-center cursor-pointer
-          rounded-tr-md rounded-br-md px-2 bg-white hover-effects pointer-events-none opacity-100 group-focus-within:opacity-0"
+          className="absolute top-0 right-0 h-full flex items-center px-6 cursor-pointer
+  rounded-tr-xl rounded-br-xl bg-white hover:bg-[#EDF2FD] hover-effects"
         >
-          <IoSearch className="size-5 text-charcoal/40" />
+          <IoSearch className="size-5 text-royal" />
         </span>
 
         {filteredLocations.length > 0 && (

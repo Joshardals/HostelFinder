@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { MobileRatingFilter } from "./MobileRatingFilter";
 import { MobileHostelTypeFilter } from "./MobileHostelTypeFilter";
 import { useLockBodyScroll } from "@/lib/hooks";
+import { HostelMap } from "../HostelMap";
 
 const filterData = [
   {
@@ -22,7 +23,9 @@ const filterData = [
 
 export function ToggleFilter() {
   const [filterOpen, setFilterOpen] = useState(false);
-  useLockBodyScroll(filterOpen); // An hook to lock the body scroll
+  const [mapOpen, setMapOpen] = useState(false);
+
+  useLockBodyScroll(filterOpen, mapOpen); // An hook to lock the body scroll
 
   return (
     <section className=" p-4 md:hidden fixed left-0 right-0 bg-white z-20">
@@ -33,13 +36,32 @@ export function ToggleFilter() {
             onClick={() => {
               if (item.label === "Filters") {
                 setFilterOpen(!filterOpen);
+              } else {
+                setMapOpen(!mapOpen);
               }
             }}
           >
-            <ToggleButton label={item.label} icon={item.icon} />
+            <ToggleButton
+              label={item.label}
+              icon={item.icon}
+              mapOpen={mapOpen}
+            />
           </div>
         ))}
 
+        {/* Map Container */}
+        <div
+          className={`absolute top-14 h-screen left-0 w-full z-10 ring-1 bg-white ring-white hover-effects 
+            ${
+              mapOpen
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }`}
+        >
+          <HostelMap />
+        </div>
+
+        {/* Filters Container */}
         <div
           className={`absolute -top-2 h-screen left-0 w-full z-10 ring-1 bg-white ring-white hover-effects 
             ${

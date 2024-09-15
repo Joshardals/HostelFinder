@@ -18,7 +18,8 @@ export function HostelCard() {
         navigation={true}
         speed={700}
         modules={[Pagination, Navigation]}
-        className="mySwiper w-full rounded-xl"
+        className="mySwiper w-full rounded-xl cursor-pointer"
+        onClick={() => setOpen(!open)}
       >
         {Array.from({ length: 3 }).map((_, index) => (
           <SwiperSlide className=" bg-black" key={index}>

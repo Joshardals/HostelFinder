@@ -104,3 +104,6 @@ export const sortingData = [
     value: "date-asc",
   },
 ];
+
+// locations Available
+export const predefinedLocation = ["PPL", "Post Service Estate"];

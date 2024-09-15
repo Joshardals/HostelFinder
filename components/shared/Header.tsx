@@ -5,31 +5,27 @@ import { Logo } from "./Logo";
 import { navlinks } from "@/lib/data";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { SidebarToggle } from "@/lib/store";
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Navigation from "../Find-Hostels/[id]/Navigation";
 import { useLockBodyScroll } from "@/lib/hooks";
+import { Searchbar } from "../Find-Hostels/Searchbar";
 
 export function Header() {
   const { open, setOpen } = SidebarToggle();
   const pathname = usePathname();
-  const isHostelDetail = pathname.startsWith("/find-hostels/");
+  const isHostels = pathname.startsWith("/find-hostels");
 
   return (
     <header className="max-[1200px]:p-4 lg:py-2 fixed bg-white top-0 right-0 left-0 w-full z-30">
       <div
-        className={`max-content grid ${
-          isHostelDetail ? "grid-cols-3" : "grid-cols-2"
-        } md:grid-cols-3 md:gap-4 items-center`}
+        className={`max-content flex gap-2 md:grid md:grid-cols-3 md:gap-4 items-center`}
       >
-        <div className={`sm:hidden ${!isHostelDetail && "hidden"}`}>
-          <Navigation />
+        <div className={`${isHostels && "max-sm:justify-self-center"}`}>
+          <Logo isHostels={isHostels} />
         </div>
 
-        <div className={`${isHostelDetail && "max-sm:justify-self-center"}`}>
-          <Logo />
-        </div>
+        <div className="flex-1 md:hidden">{isHostels && <Searchbar />}</div>
 
+        {/* NavLinks only appear on screen size starting from md */}
         <div className="justify-self-center flex items-center space-x-8 max-md:hidden">
           <NavLinks label="Find Hostels" href="/find-hostels" />
           <NavLinks label="About Us" href="#" />
