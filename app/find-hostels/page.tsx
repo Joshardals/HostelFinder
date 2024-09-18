@@ -1,10 +1,15 @@
+import { fetchAllHostels } from "@/lib/database/database.action";
 import { FilterBar } from "@/components/Find-Hostels/FilterBar";
 import { Hostelcontainer } from "@/components/Find-Hostels/HostelContainer";
 import HostelInfoMap from "@/components/Find-Hostels/HostelInfoMap";
 import { HostelMap } from "@/components/Find-Hostels/HostelMap";
 import { ToggleFilter } from "@/components/Find-Hostels/Mobile/ToggleFilter";
 
-export default function HostelPage() {
+export default async function HostelPage() {
+  const { data, total } = await fetchAllHostels();
+  console.log(data);
+  if (!data) return null;
+
   return (
     <main>
       <FilterBar />
@@ -21,7 +26,7 @@ export default function HostelPage() {
 
       <div className="max-content max-[1200px]:px-4">
         <div className="py-[4.5rem] ">
-          <Hostelcontainer />
+          <Hostelcontainer hostels={data} total={total} />
         </div>
       </div>
     </main>

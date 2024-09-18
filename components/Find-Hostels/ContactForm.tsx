@@ -1,6 +1,12 @@
 import { FieldValues, useForm } from "react-hook-form";
 
-export function ContactForm() {
+export function ContactForm({
+  name,
+  number,
+}: {
+  name: string;
+  number: string;
+}) {
   const {
     register,
     handleSubmit,
@@ -22,8 +28,8 @@ export function ContactForm() {
       <span className="font-medium capitalize">contact the owner</span>
 
       <div>
-        <span className="font-medium capitalize">John Okoro</span>
-        <p>0806 123 4567</p>
+        <span className="font-medium capitalize">{name}</span>
+        <p>{number}</p>
       </div>
 
       <div className="grid gap-2">

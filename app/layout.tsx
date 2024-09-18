@@ -9,6 +9,8 @@ import "mapbox-gl/dist/mapbox-gl.css"; // MapBox Css styling
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "swiper/css/free-mode";
 
 export const metadata: Metadata = {
   title: "Find Hostels Near Lagos State University | HostelFinder",

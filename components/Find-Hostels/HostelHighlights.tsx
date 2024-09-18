@@ -1,3 +1,4 @@
+import { timeAgo } from "@/lib/utils";
 import {
   FaTint,
   FaBolt,
@@ -7,27 +8,36 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 
-export function HostelHighlights() {
+export function HostelHighlights({
+  water_supply,
+  electricity,
+  kitchen,
+  security,
+  furnishing,
+  listed,
+}: {
+  water_supply: string;
+  electricity: string;
+  kitchen: string;
+  security: string;
+  furnishing: string;
+  listed: string;
+}) {
   return (
     <div className="p-4 ring-1 ring-charcoal/20 rounded-xl">
       <span className="font-medium text-[18px]">Hostel Highlights</span>
       <div className="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-4 mt-4">
-        <Highlights
-          icon={FaTint}
-          label="Water Supply"
-          //   content="Regular borehole water"
-          content="Borehole"
-        />
-        <Highlights icon={FaBolt} label="Electricity" content="Prepaid Meter" />
+        <Highlights icon={FaTint} label="Water Supply" content={water_supply} />
+        <Highlights icon={FaBolt} label="Electricity" content={electricity} />
         {/* Shared/Private are the only options for the kitchen  */}
-        <Highlights icon={FaUtensils} label="Kitchen" content="Private" />
+        <Highlights icon={FaUtensils} label="Kitchen" content={kitchen} />
+        <Highlights icon={FaShieldAlt} label="Security" content={security} />
+        <Highlights icon={FaBed} label="Furnishing" content={furnishing} />
         <Highlights
-          icon={FaShieldAlt}
-          label="Security"
-          content="Fenced & Secured"
+          icon={FaCalendarAlt}
+          label="Listed"
+          content={timeAgo(listed)}
         />
-        <Highlights icon={FaBed} label="Furnishing" content="Unfurnished" />
-        <Highlights icon={FaCalendarAlt} label="Listed" content="3 Days Ago" />
       </div>
     </div>
   );

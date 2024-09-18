@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { HostelDetailsState, SidebarState } from "@/typings";
 import { FiltersState } from "@/typings/filters";
+import { HostelTypings } from "@/typings/database";
 
 export const SidebarToggle = create<SidebarState>((set) => ({
   open: null,
@@ -9,7 +10,10 @@ export const SidebarToggle = create<SidebarState>((set) => ({
 
 export const HostelDetailsToggle = create<HostelDetailsState>((set) => ({
   open: null,
+  selectedHostel: null,
   setOpen: (open) => set(() => ({ open })),
+  setSelectedHostel: (hostel: HostelTypings | null) =>
+    set(() => ({ selectedHostel: hostel })),
 }));
 
 // Filters Store
