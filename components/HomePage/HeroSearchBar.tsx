@@ -9,8 +9,8 @@ export function HeroSearchBar() {
     useLocationSearch(searchQuery, setSearchQuery);
 
   return (
-    <div ref={divRef}>
-      <form className="relative md:w-[26rem] max-sm:w-full mb-2">
+    <div ref={divRef} className="w-full">
+      <form className="relative md:w-[26rem] max-md:w-full mb-2">
         <input
           type="text"
           value={searchQuery}
@@ -27,7 +27,7 @@ export function HeroSearchBar() {
         </span>
 
         {filteredLocations.length > 0 && (
-          <ul className="absolute bg-white z-10 max-h-60 overflow-auto w-[15rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ">
+          <ul className="absolute bg-white z-10 max-h-60 overflow-auto max-sm:w-full w-[26rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ">
             {filteredLocations.map((location, index) => (
               <li
                 key={index}

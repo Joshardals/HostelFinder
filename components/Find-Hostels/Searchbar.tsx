@@ -1,9 +1,7 @@
 "use client";
-import { ChangeEvent, useRef, useState } from "react";
-import { IoSearch, IoLocationSharp } from "react-icons/io5";
-import { predefinedLocation } from "@/lib/data";
+import { IoSearch } from "react-icons/io5";
 import { useFiltersStore } from "@/lib/store";
-import { useClickOutside, useLocationSearch } from "@/lib/hooks";
+import { useLocationSearch } from "@/lib/hooks";
 
 export function Searchbar() {
   const { searchQuery, setSearchQuery } = useFiltersStore();
@@ -12,7 +10,7 @@ export function Searchbar() {
 
   return (
     <div ref={divRef}>
-      <form className="relative w-full lg:w-[22rem]">
+      <form className="relative max-md:w-full md:w-[22rem]">
         <input
           type="text"
           value={searchQuery}
@@ -29,7 +27,7 @@ export function Searchbar() {
         </span>
 
         {filteredLocations.length > 0 && (
-          <ul className="absolute bg-white z-10 max-h-60 overflow-auto w-[15rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ">
+          <ul className="absolute bg-white z-10 max-h-60 overflow-auto max-md:w-full w-[22rem] p-2 rounded-md mt-2 hover-effects shadow-md shadow-charcoal/20 ">
             {filteredLocations.map((location, index) => (
               <li
                 key={index}

@@ -3,6 +3,7 @@ import { Header } from "@/components/shared/Header";
 import { lora, poppins } from "./fonts";
 import type { Metadata } from "next";
 import "./globals.css";
+import "mapbox-gl/dist/mapbox-gl.css"; // MapBox Css styling
 
 // Swiper Styles
 import "swiper/css";

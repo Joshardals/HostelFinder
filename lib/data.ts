@@ -106,4 +106,14 @@ export const sortingData = [
 ];
 
 // locations Available
-export const predefinedLocation = ["PPL", "Post Service Estate"];
+export const predefinedLocation = [
+  "PPL Alasia Ojo, Lagos",
+  "Post Service Estate Ojo, Lagos",
+  "Agboroko Iyana Iba Road, Ojo Lagos",
+  "First Gate Ojo, Lagos",
+  "Igbo Elerin Rd, Ojo Lagos",
+  "Iyana School Ojo, Alasia Lagos",
+  "Obadore Road Lagos",
+  "Igando Road Lagos",
+  "Iba Road Ojo, Lagos",
+];

@@ -35,7 +35,8 @@ export function HostelInfo() {
             <Features />
           </div>
 
-          <HostelInfoMap />
+          {/* I don't really need map atm */}
+          {/* <HostelInfoMap /> */} 
 
           {/* Description */}
           <div className="max-lg:mb-8">

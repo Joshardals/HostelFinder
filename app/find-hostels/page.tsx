@@ -10,12 +10,18 @@ export default function HostelPage() {
       <FilterBar />
       <ToggleFilter />
 
-      <div className="lg:grid lg:grid-cols-3 lg:gap-4 max-content max-[1200px]:px-4">
+      {/* <div className="lg:grid lg:grid-cols-3 lg:gap-4 max-content max-[1200px]:px-4">
         <div className=" col-span-2 py-[4.5rem] lg:mt-4">
           <Hostelcontainer />
         </div>
         <div className="w-full py-[4.5rem] mt-4 max-lg:hidden">
           <HostelMap />
+        </div>
+      </div> */}
+
+      <div className="max-content max-[1200px]:px-4">
+        <div className="py-[4.5rem] ">
+          <Hostelcontainer />
         </div>
       </div>
     </main>
