@@ -1,6 +1,8 @@
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { priceRange } from "@/lib/data";
 import { toNaira } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useFiltersStore } from "@/lib/store";
 
 interface SelectProps {
   type: "min" | "max";
@@ -27,6 +29,8 @@ export function Select({
   setSelected,
   otherSelected,
 }: SelectProps) {
+  const router = useRouter();
+  const { setSearchQuery } = useFiltersStore();
   const handleSelection = (item: { label: string; value: number }) => {
     // Handle the "No Min" and "No Max" case by resetting the state to null
     if (item.value === 0) {
@@ -63,8 +67,9 @@ export function Select({
     }
 
     // Set the selected item and close the dropdown
+    router.push("/find-hostels");
+    setSearchQuery(""); // Made the search query empty when filtering by price.
     setSelected(item);
-    console.log(item.value);
     if (setOpen) {
       setOpen(false);
     }

@@ -9,7 +9,7 @@ import { HostelCardSkeleton } from "../ui/HostelCardSkeleton";
 import { HostelDetails } from "./HostelDetails";
 import { Sorting } from "./Sorting";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useFiltersStore } from "@/lib/store";
 
 export function Hostelcontainer() {
@@ -22,8 +22,8 @@ export function Hostelcontainer() {
   const location = params.get("location");
 
   // Filtering By Price Range.
-  const { maxSelected } = useFiltersStore();
-  const { minSelected } = useFiltersStore();
+  const { maxSelected, setMaxSelected } = useFiltersStore();
+  const { minSelected, setMinSelected } = useFiltersStore();
 
   useEffect(() => {
     const fetchHostels = async () => {
@@ -44,6 +44,7 @@ export function Hostelcontainer() {
         } else if (location) {
           // Fetch hostels based on location if no price range is selected
           response = await fetchHostelsByLocation(location);
+          setMinSelected(null);
           hostelsData = response.data || [];
         } else {
           // Fetch all hostels if no price range or location is selected
