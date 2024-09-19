@@ -26,7 +26,7 @@ export function HostelInfo({
                 {toNaira(selectedHostel.price)}/yr
               </h3>
               <div>
-                <Ratings />
+                <Ratings rating={selectedHostel.ratings} />
               </div>
               <p className="font-medium max-sm:hidden">
                 {selectedHostel.address}
@@ -60,7 +60,12 @@ export function HostelInfo({
               <HiDevicePhoneMobile />
               <span>{selectedHostel.contact_number}</span>
             </div>
-            <p className="text-pretty">{selectedHostel.description}</p>
+            <p
+              className="text-pretty"
+              dangerouslySetInnerHTML={{
+                __html: selectedHostel.description.replace(/\n/g, "<br />"),
+              }}
+            />
           </div>
         </div>
 

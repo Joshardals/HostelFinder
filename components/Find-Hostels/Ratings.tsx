@@ -1,7 +1,6 @@
 import { IoStar, IoStarHalfOutline, IoStarOutline } from "react-icons/io5";
 
-export function Ratings() {
-  const rating = 3.2;
+export function Ratings({ rating }: { rating: number }) {
   const totalStars = 5;
   const fullStars = Math.floor(rating); // full stars
   const hasHalfStar = rating % 1 !== 0; // check if there's a half star

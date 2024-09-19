@@ -2,15 +2,37 @@
 import { IoSearch } from "react-icons/io5";
 import { useFiltersStore } from "@/lib/store";
 import { useLocationSearch } from "@/lib/hooks";
+import { FormEvent, useEffect } from "react";
+import {
+  fetchAllHostels,
+  fetchHostelsByLocation,
+} from "@/lib/database/database.action";
 
 export function Searchbar() {
   const { searchQuery, setSearchQuery } = useFiltersStore();
   const { filteredLocations, handleChange, handleSuggestionClick, divRef } =
     useLocationSearch(searchQuery, setSearchQuery);
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("loading");
+
+    try {
+      const hostel = await fetchAllHostels();
+      console.log(hostel);
+    } catch (error: any) {
+      console.log(`Error fetching hostels: ${error.message}`);
+    } finally {
+      console.log("done");
+    }
+  };
+
   return (
     <div ref={divRef}>
-      <form className="relative max-md:w-full md:w-[22rem]">
+      <form
+        className="relative max-md:w-full md:w-[22rem]"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           value={searchQuery}

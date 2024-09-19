@@ -11,7 +11,7 @@ export function HostelMap() {
         latitude: 6.46493,
         zoom: 13,
       }}
-      style={{ width: 600, height: "100vh" }}
+      style={{ width: "100%", height: "100vh" }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       <Marker longitude={3.192} latitude={6.468} anchor="bottom">

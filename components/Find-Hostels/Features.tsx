@@ -11,8 +11,8 @@ export function Features({
 }) {
   return (
     <ul className="flex space-x-4 items-center">
-      <PropertyFeature icon={FaBed} label="Room" value={room} />
-      <PropertyFeature icon={FaBath} label="Bath" value={bath} />
+      <PropertyFeature icon={FaBed} label={`Room${room > 1 ? "s" : ""}`} value={room} />
+      <PropertyFeature icon={FaBath} label={`Bath${bath > 1 ? "s" : ""}`} value={bath} />
       <PropertyFeature
         icon={FaRulerCombined}
         label="sqft"

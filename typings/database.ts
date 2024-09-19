@@ -17,8 +17,12 @@ export interface HostelTypings {
   available: boolean;
   ratings: number;
   hostel_id: number;
-  contact_name: string; 
+  contact_name: string;
   $id: string;
   $createdAt: string;
   $updatedAt: string;
+}
+
+export interface HostelFilteringTypings {
+  searchLocation?: string;
 }

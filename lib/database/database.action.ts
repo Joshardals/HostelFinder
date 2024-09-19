@@ -4,9 +4,16 @@ import { Query } from "node-appwrite";
 
 const { APPWRITE_DATABASE_ID, APPWRITE_HOSTELS_ID } = process.env;
 
+// Helper function to simulate a delay
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 // Function to get all events from the database
 export async function fetchAllHostels() {
   try {
+    // await delay(5000); // Simulate delay
+
     // Query the Hostels collection to retrieve all hostel documents
     const data = await databases.listDocuments(
       APPWRITE_DATABASE_ID as string,
@@ -34,7 +41,7 @@ export async function fetchAllHostels() {
       available: doc.available,
       ratings: doc.ratings,
       hostel_id: doc.hostel_id,
-      contact_name: doc.contact_name, 
+      contact_name: doc.contact_name,
       $id: doc.$id,
       $createdAt: doc.$createdAt,
       $updatedAt: doc.$updatedAt,
@@ -42,6 +49,23 @@ export async function fetchAllHostels() {
 
     // Return success status with the list of hostels
     return { success: true, data: hostels, total: data.total };
+  } catch (error: any) {
+    console.error(`Failed to fetch Hostels: ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+}
+
+export async function fetchHostelsByLocation(location: string) {
+  try {
+    // Query the Hostels collection to retrieve all hostel documents
+    const data = await databases.listDocuments(
+      APPWRITE_DATABASE_ID as string,
+      APPWRITE_HOSTELS_ID as string,
+      []
+    );
+
+    // Return success status with the list of hostels
+    return { success: true, data, total: data.total };
   } catch (error: any) {
     console.error(`Failed to fetch Hostels: ${error.message}`);
     return { success: false, msg: error.message };

@@ -6,10 +6,13 @@ import { IoStar } from "react-icons/io5";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { toNaira } from "@/lib/utils";
+import { useEffect } from "react";
+import { fetchAllHostels } from "@/lib/database/database.action";
 
 export function HostelCard({ hostel }: { hostel: HostelTypings }) {
   const { open, setOpen, setSelectedHostel } = HostelDetailsToggle();
   if (!hostel) return null;
+
   return (
     // <Link href="/find-hostels/12345" passHref legacyBehavior>
     //   <a className="space-y-2" target="_blank" rel="noopener noreferrer">
@@ -17,7 +20,9 @@ export function HostelCard({ hostel }: { hostel: HostelTypings }) {
     <div className="space-y-2 rounded-xl">
       <Swiper
         slidesPerView={1}
-        pagination={true}
+        pagination={{
+          dynamicBullets: true,
+        }}
         navigation={true}
         speed={700}
         modules={[Pagination, Navigation]}
@@ -28,7 +33,7 @@ export function HostelCard({ hostel }: { hostel: HostelTypings }) {
         }}
       >
         {hostel.image_urls.map((img, index) => (
-          <SwiperSlide className="select-none bg-black" key={index}>
+          <SwiperSlide className="select-none bg-charcoal" key={index}>
             <div className={` h-[15rem] max-sm:h-[25rem]`}>
               <Image
                 src={img}
