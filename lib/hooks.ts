@@ -1,6 +1,7 @@
 "use client";
 import { predefinedLocation } from "./data";
 import { useEffect, RefObject, ChangeEvent, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export function useClickOutside(
   ref: RefObject<HTMLElement>,
@@ -43,6 +44,7 @@ export function useLocationSearch(
 ) {
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
   const divRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
 
   // Custom hook to handle click outside
   useClickOutside(divRef, () => setFilteredLocations([]));
@@ -63,12 +65,14 @@ export function useLocationSearch(
 
   const handleSuggestionClick = (location: string) => {
     setSearchQuery(location);
+    router.push(`/find-hostels?location=${encodeURIComponent(location)}`);
     setFilteredLocations([]);
   };
 
   return {
     searchQuery,
     filteredLocations,
+    setFilteredLocations, 
     handleChange,
     handleSuggestionClick,
     divRef,

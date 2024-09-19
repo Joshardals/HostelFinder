@@ -2,29 +2,29 @@
 import { IoSearch } from "react-icons/io5";
 import { useFiltersStore } from "@/lib/store";
 import { useLocationSearch } from "@/lib/hooks";
-import { FormEvent, useEffect } from "react";
-import {
-  fetchAllHostels,
-  fetchHostelsByLocation,
-} from "@/lib/database/database.action";
+import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export function Searchbar() {
   const { searchQuery, setSearchQuery } = useFiltersStore();
-  const { filteredLocations, handleChange, handleSuggestionClick, divRef } =
-    useLocationSearch(searchQuery, setSearchQuery);
+  const {
+    filteredLocations,
+    setFilteredLocations,
+    handleChange,
+    handleSuggestionClick,
+    divRef,
+  } = useLocationSearch(searchQuery, setSearchQuery);
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("loading");
-
-    try {
-      const hostel = await fetchAllHostels();
-      console.log(hostel);
-    } catch (error: any) {
-      console.log(`Error fetching hostels: ${error.message}`);
-    } finally {
-      console.log("done");
+    if (!searchQuery) {
+      router.push(`/find-hostels`);
+    } else {
+      // If there's a search query, apply the location filter
+      router.push(`/find-hostels?location=${encodeURIComponent(searchQuery)}`);
     }
+    setFilteredLocations([]);
   };
 
   return (

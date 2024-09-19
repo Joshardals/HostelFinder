@@ -64,6 +64,7 @@ export function Select({
 
     // Set the selected item and close the dropdown
     setSelected(item);
+    console.log(item.value);
     if (setOpen) {
       setOpen(false);
     }

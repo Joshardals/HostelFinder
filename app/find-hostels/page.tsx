@@ -15,9 +15,7 @@ export default async function HostelPage() {
 
       <div className="max-content max-[1200px]:px-4">
         <div className="py-[4.5rem] ">
-          <Suspense fallback={<HostelCardSkeleton />}>
-            <Hostelcontainer />
-          </Suspense>
+          <Hostelcontainer />
         </div>
       </div>
     </main>

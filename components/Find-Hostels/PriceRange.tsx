@@ -6,6 +6,7 @@ import { toNaira } from "@/lib/utils";
 import { Select } from "./Select";
 import { useClickOutside } from "@/lib/hooks";
 import { useFiltersStore } from "@/lib/store";
+import { fetchAllHostels } from "@/lib/database/database.action";
 
 export function PriceRange() {
   const [open, setOpen] = useState(false);

@@ -2,15 +2,37 @@
 import { IoSearch } from "react-icons/io5";
 import { useFiltersStore } from "@/lib/store";
 import { useLocationSearch } from "@/lib/hooks";
+import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export function HeroSearchBar() {
   const { searchQuery, setSearchQuery } = useFiltersStore();
-  const { filteredLocations, handleChange, handleSuggestionClick, divRef } =
-    useLocationSearch(searchQuery, setSearchQuery);
+  const {
+    filteredLocations,
+    setFilteredLocations,
+    handleChange,
+    handleSuggestionClick,
+    divRef,
+  } = useLocationSearch(searchQuery, setSearchQuery);
+  const router = useRouter();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!searchQuery) {
+      router.push(`/find-hostels`);
+    } else {
+      // If there's a search query, apply the location filter
+      router.push(`/find-hostels?location=${encodeURIComponent(searchQuery)}`);
+    }
+    setFilteredLocations([]);
+  };
 
   return (
     <div ref={divRef} className="w-full">
-      <form className="relative md:w-[26rem] max-md:w-full mb-2">
+      <form
+        className="relative md:w-[26rem] max-md:w-full mb-2"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           value={searchQuery}
