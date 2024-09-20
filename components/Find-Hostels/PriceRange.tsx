@@ -17,7 +17,7 @@ export function PriceRange() {
 
   function handleClick() {
     setOpen(!open);
-    setMinOpen(false);
+    setMinOpen(false); 
     setMaxOpen(false);
   }
 
