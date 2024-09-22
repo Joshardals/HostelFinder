@@ -1,7 +1,6 @@
 "use client";
 import { useLockBodyScroll } from "@/lib/hooks";
 import { HostelDetailsToggle } from "@/lib/store";
-import { HostelGallery } from "./HostelGallery";
 import { HostelInfo } from "./HostelInfo";
 import { HostelDetailsHeader } from "./HostelDetailsHeader";
 
