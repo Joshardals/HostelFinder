@@ -53,50 +53,50 @@ export async function fetchAllHostels() {
   }
 }
 
-export async function fetchHostelsByLocation(location: string) {
-  try {
-    await delay(1000);
-    // Query the Hostels collection to retrieve all hostel documents
-    const data = await databases.listDocuments(
-      APPWRITE_DATABASE_ID as string,
-      APPWRITE_HOSTELS_ID as string,
-      [Query.contains("address", location)]
-    );
+// export async function fetchHostelsByLocation(location: string) {
+//   try {
+//     await delay(1000);
+//     // Query the Hostels collection to retrieve all hostel documents
+//     const data = await databases.listDocuments(
+//       APPWRITE_DATABASE_ID as string,
+//       APPWRITE_HOSTELS_ID as string,
+//       [Query.contains("address", location)]
+//     );
 
-    // Return success status with the list of hostels
-    return { success: true, data: data.documents, total: data.total };
-  } catch (error: any) {
-    console.error(`Failed to fetch Hostels: ${error.message}`);
-    return { success: false, msg: error.message };
-  }
-}
+//     // Return success status with the list of hostels
+//     return { success: true, data: data.documents, total: data.total };
+//   } catch (error: any) {
+//     console.error(`Failed to fetch Hostels: ${error.message}`);
+//     return { success: false, msg: error.message };
+//   }
+// }
 
-export async function fetchHostelsByPriceRange(
-  minPrice: number,
-  maxPrice: number
-) {
-  try {
-    // Construct the query based on minPrice and maxPrice
-    let queries = [];
+// export async function fetchHostelsByPriceRange(
+//   minPrice: number,
+//   maxPrice: number
+// ) {
+//   try {
+//     // Construct the query based on minPrice and maxPrice
+//     let queries = [];
 
-    if (minPrice > 0) {
-      queries.push(Query.greaterThanEqual("price", minPrice));
-    }
+//     if (minPrice > 0) {
+//       queries.push(Query.greaterThanEqual("price", minPrice));
+//     }
 
-    if (maxPrice > 0) {
-      queries.push(Query.lessThanEqual("price", maxPrice));
-    }
+//     if (maxPrice > 0) {
+//       queries.push(Query.lessThanEqual("price", maxPrice));
+//     }
 
-    // Query the database to retrieve hostels within the price range
-    const data = await databases.listDocuments(
-      APPWRITE_DATABASE_ID as string,
-      APPWRITE_HOSTELS_ID as string,
-      queries
-    );
+//     // Query the database to retrieve hostels within the price range
+//     const data = await databases.listDocuments(
+//       APPWRITE_DATABASE_ID as string,
+//       APPWRITE_HOSTELS_ID as string,
+//       queries
+//     );
 
-    return { success: true, data: data.documents, total: data.total };
-  } catch (error: any) {
-    console.error(`Failed to fetch hostels by price range: ${error.message}`);
-    return { success: false, msg: error.message };
-  }
-}
+//     return { success: true, data: data.documents, total: data.total };
+//   } catch (error: any) {
+//     console.error(`Failed to fetch hostels by price range: ${error.message}`);
+//     return { success: false, msg: error.message };
+//   }
+// }

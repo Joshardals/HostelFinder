@@ -66,9 +66,9 @@ export function Select({
       return;
     }
 
-    // Set the selected item and close the dropdown
-    router.push("/find-hostels");
-    setSearchQuery(""); // Made the search query empty when filtering by price.
+    // // Set the selected item and close the dropdown
+    // router.push("/find-hostels");
+    // setSearchQuery(""); // Made the search query empty when filtering by price.
     setSelected(item);
     if (setOpen) {
       setOpen(false);
