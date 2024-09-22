@@ -146,7 +146,7 @@ export function Hostelcontainer() {
         ) : (
           <div>
             <h4 className="font-medium">
-              Oops! Looks like there aren't any hostels matching your search.
+              Oops! Looks like there aren&apos;t any hostels matching your search.
             </h4>
             <p>Remove filters to find more hostels:</p>
             {location && <p>Location: {location}</p>}
