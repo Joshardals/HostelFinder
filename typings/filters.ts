@@ -5,6 +5,7 @@ export interface FiltersState {
   selectedSort: string | null;
   selectedTypes: string[];
   searchQuery: string;
+  totalHostels: number;
 
   // State setters
   setMaxSelected: (maxSelected: FiltersState["maxSelected"]) => void;
@@ -13,4 +14,5 @@ export interface FiltersState {
   setSelectedSort: (sort: FiltersState["selectedSort"]) => void;
   setSelectedTypes: (updateFn: (types: string[]) => string[]) => void; // Update type to function
   setSearchQuery: (searchQuery: FiltersState["searchQuery"]) => void;
+  setTotalHostels: (totalHostels: FiltersState["totalHostels"]) => void;
 }

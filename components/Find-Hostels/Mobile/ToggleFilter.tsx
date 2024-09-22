@@ -9,6 +9,7 @@ import { MobileRatingFilter } from "./MobileRatingFilter";
 import { MobileHostelTypeFilter } from "./MobileHostelTypeFilter";
 import { useLockBodyScroll } from "@/lib/hooks";
 import { HostelMap } from "../HostelMap";
+import { useFiltersStore } from "@/lib/store";
 
 const filterData = [
   {
@@ -24,6 +25,7 @@ const filterData = [
 export function ToggleFilter() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
+  const { totalHostels } = useFiltersStore();
 
   useLockBodyScroll(filterOpen, mapOpen); // An hook to lock the body scroll
 
@@ -91,8 +93,15 @@ export function ToggleFilter() {
               : "opacity-0 pointer-events-none"
           }`}
         >
-          <button type="button" className="btn">
-            View Hostels
+          <button
+            type="button"
+            className="btn"
+            onClick={() => {
+              setMapOpen(false);
+              setFilterOpen(false);
+            }}
+          >
+            View Hostel{totalHostels > 1 && "s"} {`(${totalHostels})`}
           </button>
         </div>
       </div>

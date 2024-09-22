@@ -24,6 +24,7 @@ export const useFiltersStore = create<FiltersState>((set) => ({
   selectedSort: "Date (Newest)",
   selectedTypes: [],
   searchQuery: "",
+  totalHostels: 0,
 
   // State setters
   setMaxSelected: (maxSelected) => set({ maxSelected }),
@@ -38,4 +39,5 @@ export const useFiltersStore = create<FiltersState>((set) => ({
       selectedTypes: updateFn(state.selectedTypes ?? []),
     })),
   setSearchQuery: (searchQuery) => set(() => ({ searchQuery })),
+  setTotalHostels: (totalHostels) => set(() => ({ totalHostels })),
 }));
