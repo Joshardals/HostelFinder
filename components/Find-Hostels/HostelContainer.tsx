@@ -1,4 +1,5 @@
 "use client";
+
 import { fetchAllHostels } from "@/lib/database/database.action";
 import { HostelCard } from "../shared/HostelCard";
 import { HostelCardSkeleton } from "../ui/HostelCardSkeleton";
@@ -11,7 +12,8 @@ import { useFiltersStore } from "@/lib/store";
 export function Hostelcontainer() {
   const [hostels, setHostels] = useState<any[]>([]); // For displaying filtered hostels
   const [allHostels, setAllHostels] = useState<any[]>([]); // Store all hostels initially
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Start with loading true
+  const [filtering, setFiltering] = useState(false); // New state for filtering
   const params = useSearchParams();
   const router = useRouter();
 
@@ -36,7 +38,6 @@ export function Hostelcontainer() {
   // Fetch all hostels initially
   useEffect(() => {
     const fetchHostels = async () => {
-      setLoading(true);
       try {
         const response = await fetchAllHostels();
         const hostelsData = response.data || [];
@@ -48,7 +49,7 @@ export function Hostelcontainer() {
         console.error(`Error fetching hostels: ${error}`);
         setHostels([]); // Fallback to an empty array on error
       } finally {
-        setLoading(false);
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
@@ -57,42 +58,51 @@ export function Hostelcontainer() {
 
   // Apply filters on the frontend
   useEffect(() => {
-    let filteredHostels = allHostels;
+    if (loading) return; // Do not apply filters while loading
 
-    // Apply location filter
-    if (location) {
-      filteredHostels = filteredHostels.filter((hostel) =>
-        hostel.address.toLowerCase().includes(location.toLowerCase())
-      );
-    }
+    setFiltering(true); // Show filtering state
 
-    // Apply price range filter
-    if (minSelected || maxSelected) {
-      const minPrice = minSelected ? minSelected.value : 0;
-      const maxPrice = maxSelected ? maxSelected.value : Infinity;
+    const timeoutId = setTimeout(() => {
+      let filteredHostels = allHostels;
 
-      filteredHostels = filteredHostels.filter(
-        (hostel) => hostel.price >= minPrice && hostel.price <= maxPrice
-      );
-    }
+      // Apply filters...
+      if (location) {
+        filteredHostels = filteredHostels.filter((hostel) =>
+          hostel.address.toLowerCase().includes(location.toLowerCase())
+        );
+      }
 
-    // Apply rating filter
-    if (selectedRating) {
-      filteredHostels = filteredHostels.filter(
-        (hostel) => hostel.ratings > selectedRating
-      );
-    }
+      if (minSelected || maxSelected) {
+        const minPrice = minSelected ? minSelected.value : 0;
+        const maxPrice = maxSelected ? maxSelected.value : Infinity;
 
-    // Apply HostelType Filter
-    if (selectedTypes && selectedTypes.length > 0) {
-      filteredHostels = filteredHostels.filter(
-        (hostel) => selectedTypes.includes(hostel.type) // Ensure hostel.type matches any selected type
-      );
-    }
+        filteredHostels = filteredHostels.filter(
+          (hostel) => hostel.price >= minPrice && hostel.price <= maxPrice
+        );
+      }
 
-    // Update filtered hostels and total count
-    setHostels(filteredHostels);
-    setTotalHostels(filteredHostels.length);
+      if (selectedRating) {
+        filteredHostels = filteredHostels.filter(
+          (hostel) => hostel.ratings > selectedRating
+        );
+      }
+
+      if (selectedTypes && selectedTypes.length > 0) {
+        filteredHostels = filteredHostels.filter((hostel) =>
+          selectedTypes.includes(hostel.type)
+        );
+      }
+
+      // Update filtered hostels and total count
+      setHostels(filteredHostels);
+      setTotalHostels(filteredHostels.length);
+      setFiltering(false); // Hide filtering state
+    }, 1000); // 1 second timeout
+
+    return () => {
+      clearTimeout(timeoutId); // Cleanup the timeout on unmount
+      setFiltering(false); // Ensure filtering is reset on unmount
+    };
   }, [
     location,
     minSelected,
@@ -100,6 +110,7 @@ export function Hostelcontainer() {
     selectedRating,
     selectedTypes,
     allHostels,
+    loading,
   ]);
 
   // Reset all filters
@@ -107,15 +118,14 @@ export function Hostelcontainer() {
     setMinSelected(null);
     setMaxSelected(null);
     setSelectedRating(null);
-    setSelectedTypes(() => []); // Pass a function that returns an empty array
-
+    setSelectedTypes(() => []);
     router.push("/find-hostels");
-    setSearchQuery(""); // Made the search query empty when filtering by price.
+    setSearchQuery(""); // Reset the search query
     setHostels(allHostels); // Reset to show all hostels
   };
 
-  // Display a skeleton loader while data is being fetched
-  if (loading) return <HostelCardSkeleton />;
+  // Display a skeleton loader while data is being fetched or filtered
+  if (loading || filtering) return <HostelCardSkeleton />;
 
   return (
     <section className="relative">
