@@ -11,10 +11,10 @@ export function FeaturedHostels() {
       </div>
 
       <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+        {/* <HostelCard />
         <HostelCard />
         <HostelCard />
-        <HostelCard />
-        <HostelCard />
+        <HostelCard /> */}
       </div>
     </section>
   );
