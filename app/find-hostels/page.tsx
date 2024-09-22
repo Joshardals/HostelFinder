@@ -7,17 +7,23 @@ import { HostelMap } from "@/components/Find-Hostels/HostelMap";
 import { Suspense } from "react";
 import { ToggleFilter } from "@/components/Find-Hostels/Mobile/ToggleFilter";
 
+function Loading() {
+  return <div>Loading...</div>;
+}
+
 export default async function HostelPage() {
   return (
-    <main>
-      <FilterBar />
-      <ToggleFilter />
+    <Suspense fallback={<Loading />}>
+      <main>
+        <FilterBar />
+        <ToggleFilter />
 
-      <div className="max-content max-[1200px]:px-4">
-        <div className="py-[4.5rem] ">
-          <Hostelcontainer />
+        <div className="max-content max-[1200px]:px-4">
+          <div className="py-[4.5rem] ">
+            <Hostelcontainer />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Suspense>
   );
 }
