@@ -13,17 +13,17 @@ function Loading() {
 
 export default async function HostelPage() {
   return (
-    <Suspense fallback={<Loading />}>
-      <main>
-        <FilterBar />
-        <ToggleFilter />
+    <main>
+      <FilterBar />
+      <ToggleFilter />
 
-        <div className="max-content max-[1200px]:px-4">
-          <div className="py-[4.5rem] ">
-            <Hostelcontainer />
-          </div>
+      <div className="max-content max-[1200px]:px-4">
+        <div className="py-[4.5rem] ">
+          <Suspense fallback={<Loading />}>
+            <Hostelcontainer />  
+          </Suspense>
         </div>
-      </main>
-    </Suspense>
+      </div>
+    </main>
   );
 }
