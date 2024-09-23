@@ -26,6 +26,7 @@ export function Hostelcontainer() {
     minSelected,
     selectedRating,
     selectedTypes,
+    selectedSort,
     totalHostels,
     setMinSelected,
     setMaxSelected,
@@ -93,6 +94,28 @@ export function Hostelcontainer() {
         );
       }
 
+      // Apply sorting
+      if (selectedSort) {
+        filteredHostels = filteredHostels.sort((a, b) => {
+          switch (selectedSort) {
+            case "Price (Lo-Hi)":
+              return a.price - b.price;
+            case "Price (Hi-Lo)":
+              return b.price - a.price;
+            case "Rating (Highest)":
+              return b.ratings - a.ratings;
+            case "Rating (Lowest)":
+              return a.ratings - b.ratings;
+            case "Date (Newest)":
+              return new Date(b.$createdAt).getTime() - new Date(a.$createdAt).getTime();
+            case "Date (Oldest)":
+              return new Date(a.$createdAt).getTime() - new Date(b.$createdAt).getTime();
+            default:
+              return 0;
+          }
+        });
+      }
+
       // Update filtered hostels and total count
       setHostels(filteredHostels);
       setTotalHostels(filteredHostels.length);
@@ -109,6 +132,7 @@ export function Hostelcontainer() {
     maxSelected,
     selectedRating,
     selectedTypes,
+    selectedSort,
     allHostels,
     loading,
   ]);
@@ -121,7 +145,7 @@ export function Hostelcontainer() {
     setSelectedTypes(() => []);
     router.push("/find-hostels");
     setSearchQuery(""); // Reset the search query
-    setHostels(allHostels); // Reset to show all hostels  
+    setHostels(allHostels); // Reset to show all hostels
   };
 
   // Display a skeleton loader while data is being fetched or filtered
@@ -146,7 +170,8 @@ export function Hostelcontainer() {
         ) : (
           <div>
             <h4 className="font-medium">
-              Oops! Looks like there aren&apos;t any hostels matching your search.
+              Oops! Looks like there aren&apos;t any hostels matching your
+              search.
             </h4>
             <p>Remove filters to find more hostels:</p>
             {location && <p>Location: {location}</p>}

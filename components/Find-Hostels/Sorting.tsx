@@ -16,7 +16,7 @@ export function Sorting() {
     setOpen(!open);
   };
 
-  const handleSort = (item: { label: string; value: string }) => {
+  const handleSort = (item: { label: string }) => {
     setSelectedSort(item.label);
     setOpen(!open);
   };

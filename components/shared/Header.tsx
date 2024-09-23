@@ -15,7 +15,11 @@ export function Header() {
   const isHostels = pathname.startsWith("/find-hostels");
 
   return (
-    <header className="max-[1200px]:p-4 lg:py-2 fixed bg-white top-0 right-0 left-0 w-full z-30">
+    <header
+      className={`max-[1200px]:p-4 lg:py-2 fixed bg-white ${
+        !isHostels && "border-b border-b-charcoal/20"
+      } top-0 right-0 left-0 w-full z-30`}
+    >
       <div
         className={`max-content flex gap-2 md:grid md:grid-cols-3 md:gap-4 items-center`}
       >

@@ -8,7 +8,7 @@ export function FilterBar() {
     <section className="fixed left-0 right-0 bg-white z-20">
       {/* Desktop Version  */}
       <div className="max-content">
-        <div className="max-md:hidden px-4 space-x-4 py-4 flex items-center">
+        <div className="max-md:hidden space-x-4 py-4 flex items-center">
           <Searchbar />
           <PriceRange />
           <RatingFilter />

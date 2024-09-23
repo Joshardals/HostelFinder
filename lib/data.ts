@@ -81,27 +81,21 @@ export const hostelTypes = ["Self Contain", "Room and Parlour", "2 Bedroom"];
 export const sortingData = [
   {
     label: "Price (Lo-Hi)",
-    value: "price-asc",
   },
   {
     label: "Price (Hi-Lo)",
-    value: "price-desc",
   },
   {
     label: "Rating (Highest)",
-    value: "rating-desc",
   },
   {
     label: "Rating (Lowest)",
-    value: "rating-asc",
   },
   {
     label: "Date (Newest)",
-    value: "date-desc",
   },
   {
     label: "Date (Oldest)",
-    value: "date-asc",
   },
 ];
 

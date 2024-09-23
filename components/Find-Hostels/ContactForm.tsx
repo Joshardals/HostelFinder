@@ -16,7 +16,7 @@ export function ContactForm({
 
   const onSubmit = (data: FieldValues) => {
     console.log("Form Data Submitted: ", data);
-    // Send the data via nodemailer or API
+   
     reset(); // Resets form after submission
   };
 

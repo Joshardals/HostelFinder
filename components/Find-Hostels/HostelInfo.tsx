@@ -58,7 +58,9 @@ export function HostelInfo({
             {/* Contact Information */}
             <div className="flex items-center w-[fit-content] mt-2 mb-4 space-x-2 text-royal cursor-pointer hover:underline">
               <HiDevicePhoneMobile />
-              <span>{selectedHostel.contact_number}</span>
+              <a href={`tel:${selectedHostel.contact_number}`}>
+                {selectedHostel.contact_number}
+              </a>
             </div>
             <p
               className="text-pretty"
