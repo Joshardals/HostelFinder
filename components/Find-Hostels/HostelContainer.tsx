@@ -121,7 +121,7 @@ export function Hostelcontainer() {
     setSelectedTypes(() => []);
     router.push("/find-hostels");
     setSearchQuery(""); // Reset the search query
-    setHostels(allHostels); // Reset to show all hostels
+    setHostels(allHostels); // Reset to show all hostels  
   };
 
   // Display a skeleton loader while data is being fetched or filtered
