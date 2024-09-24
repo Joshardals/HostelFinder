@@ -1,3 +1,4 @@
+"use client";
 import { HostelCard } from "../shared/HostelCard";
 
 export function FeaturedHostels() {

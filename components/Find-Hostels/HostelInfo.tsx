@@ -73,6 +73,7 @@ export function HostelInfo({
 
         <div className="flex flex-col">
           <ContactForm
+            hostelName={selectedHostel.name}
             name={selectedHostel.contact_name}
             number={selectedHostel.contact_number}
           />
