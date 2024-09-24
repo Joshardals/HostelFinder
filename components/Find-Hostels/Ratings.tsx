@@ -29,7 +29,7 @@ export function Ratings({ rating }: { rating: number }) {
         </li>
       ))}
 
-      <span>{rating}</span>
+      <li>{rating}</li>
     </ul>
   );
 }
