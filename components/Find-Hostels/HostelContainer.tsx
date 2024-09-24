@@ -107,9 +107,15 @@ export function Hostelcontainer() {
             case "Rating (Lowest)":
               return a.ratings - b.ratings;
             case "Date (Newest)":
-              return new Date(b.$createdAt).getTime() - new Date(a.$createdAt).getTime();
+              return (
+                new Date(b.$createdAt).getTime() -
+                new Date(a.$createdAt).getTime()
+              );
             case "Date (Oldest)":
-              return new Date(a.$createdAt).getTime() - new Date(b.$createdAt).getTime();
+              return (
+                new Date(a.$createdAt).getTime() -
+                new Date(b.$createdAt).getTime()
+              );
             default:
               return 0;
           }
@@ -195,9 +201,8 @@ export function Hostelcontainer() {
           </div>
         )}
       </div>
-
-      {/* Hostel Details PopUp */}
-      <HostelDetails />
+      {/* Hostel Details PopUp
+      <HostelDetails /> */}
     </section>
   );
 }

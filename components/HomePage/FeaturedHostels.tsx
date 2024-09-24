@@ -1,7 +1,9 @@
-"use client";
+import { fetchFeaturedHostels } from "@/lib/database/database.action";
 import { HostelCard } from "../shared/HostelCard";
+import { Suspense } from "react";
+import { HostelCardSkeleton } from "../ui/HostelCardSkeleton";
 
-export function FeaturedHostels() {
+export async function FeaturedHostels() {
   return (
     <section className="max-content max-lg:p-4 lg:py-4">
       <div className="text-center mb-6">
@@ -10,13 +12,22 @@ export function FeaturedHostels() {
           Explore some of the best-rated hostels available now.
         </p>
       </div>
-
-      <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
-        {/* <HostelCard />
-        <HostelCard />
-        <HostelCard />
-        <HostelCard /> */}
-      </div>
+      <Suspense fallback={<HostelCardSkeleton />}>
+        <FeaturedHostelsContainer />
+      </Suspense>
     </section>
+  );
+}
+
+async function FeaturedHostelsContainer() {
+  const { data } = await fetchFeaturedHostels();
+  if (!data) return null;
+
+  return (
+    <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      {data?.map((item, index) => (
+        <HostelCard hostel={item} key={index} />
+      ))}
+    </div>
   );
 }

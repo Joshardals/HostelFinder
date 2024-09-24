@@ -13,6 +13,7 @@ export const howItWorksSteps = [
     src: "/images/homepage/how-it-works/search.png",
     description: "Find Your Ideal Hostel using our intuitive search feature.",
     buttonLabel: "Start your Search",
+    href: "/find-hostels",
   },
 
   {
@@ -20,6 +21,7 @@ export const howItWorksSteps = [
     src: "/images/homepage/how-it-works/checklist.png",
     description: "Choose the Best Option by reviewing detailed listings.",
     buttonLabel: "View Hostels",
+    href: "/find-hostels",
   },
 
   {
@@ -28,6 +30,7 @@ export const howItWorksSteps = [
     description:
       "Contact the hostel owner directly for any questions or booking inquiries.",
     buttonLabel: "Contact Now",
+    href: "/find-hostels",
   },
 
   // {

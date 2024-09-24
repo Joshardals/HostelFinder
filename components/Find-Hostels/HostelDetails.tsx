@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { useLockBodyScroll } from "@/lib/hooks";
 import { HostelDetailsToggle } from "@/lib/store";

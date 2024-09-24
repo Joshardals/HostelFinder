@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
+import { HostelDetails } from "@/components/Find-Hostels/HostelDetails";
 
 export const metadata: Metadata = {
   title: "Find Hostels Near Lagos State University | HostelFinder",
@@ -36,6 +37,8 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${lora.variable}`}>
         <div className="flex flex-col h-screen">
           <Header />
+          {/* Hostel Details PopUp */}
+          <HostelDetails />
           <div className="flex-1 max-lg:pt-14 lg:pt-[3.4rem]">{children}</div>
           {/* <Footer /> */}
         </div>

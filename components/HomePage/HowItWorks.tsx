@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { howItWorksSteps } from "@/lib/data";
+import Link from "next/link";
 
 export function HowItWorks() {
   return (
@@ -15,6 +16,7 @@ export function HowItWorks() {
                 src={step.src}
                 description={step.description}
                 buttonLabel={step.buttonLabel}
+                href={step.href}
               />
             ))}
           </div>
@@ -29,6 +31,7 @@ interface CardType {
   src: string;
   description: string;
   buttonLabel: string;
+  href: string;
 }
 
 function Card(card: CardType) {
@@ -48,16 +51,16 @@ function Card(card: CardType) {
 
           <div className="text-center">
             <h3 className="text-pretty">{card.label}</h3>
-            <p className="text-pretty h-[7rem]">
-              {card.description}
-            </p>
+            <p className="text-pretty h-[7rem]">{card.description}</p>
           </div>
         </div>
 
         <div className="flex justify-center">
-          <button type="button" className="how-it-works-btn">
-            {card.buttonLabel}
-          </button>
+          <Link href={card.href}>
+            <button type="button" className="how-it-works-btn">
+              {card.buttonLabel}
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -69,13 +72,13 @@ function Card(card: CardType) {
 
         <div>
           <h3 className="text-pretty mb-1">{card.label}</h3>
-          <p className="text-pretty mb-4">
-            {card.description}
-          </p>
+          <p className="text-pretty mb-4">{card.description}</p>
 
-          <button type="button" className="how-it-works-btn">
-            {card.buttonLabel}
-          </button>
+          <Link href={card.href}>
+            <button type="button" className="how-it-works-btn">
+              {card.buttonLabel}
+            </button>
+          </Link>
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { HostelTypings } from "@/typings/database";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -32,4 +33,32 @@ export function toNaira(value: number): string {
     currency: "NGN",
     maximumFractionDigits: 0,
   }).format(value);
+}
+
+// Utility function to map documents to HostelTypings
+export function mapHostels(documents: any[]): HostelTypings[] {
+  return documents.map((doc) => ({
+    name: doc.name,
+    address: doc.address,
+    price: doc.price,
+    type: doc.type,
+    room: doc.room,
+    bath: doc.bath,
+    square_feet: doc.square_feet,
+    description: doc.description,
+    contact_number: doc.contact_number,
+    image_urls: doc.image_urls,
+    water_supply: doc.water_supply,
+    electricity: doc.electricity,
+    kitchen: doc.kitchen,
+    security: doc.security,
+    furnishing: doc.furnishing,
+    available: doc.available,
+    ratings: doc.ratings,
+    hostel_id: doc.hostel_id,
+    contact_name: doc.contact_name,
+    $id: doc.$id,
+    $createdAt: doc.$createdAt,
+    $updatedAt: doc.$updatedAt,
+  }));
 }
