@@ -17,7 +17,7 @@ export function Ratings({ rating }: { rating: number }) {
 
       {/* Half Star */}
       {hasHalfStar && (
-        <li>
+        <li> 
           <IoStarHalfOutline />
         </li>
       )}
