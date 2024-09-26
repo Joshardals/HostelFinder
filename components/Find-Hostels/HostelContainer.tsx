@@ -69,7 +69,7 @@ export function Hostelcontainer() {
       // Apply filters...
       if (location) {
         filteredHostels = filteredHostels.filter((hostel) =>
-          hostel.address.toLowerCase().includes(location.toLowerCase())
+          hostel.address.toLowerCase().includes(location.toLowerCase())  
         );
       }
 
