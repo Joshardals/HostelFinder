@@ -148,7 +148,7 @@ export function Hostelcontainer() {
     setMinSelected(null);
     setMaxSelected(null);
     setSelectedRating(null);
-    setSelectedTypes(() => []);
+    setSelectedTypes(() => []);  
     router.push("/find-hostels");
     setSearchQuery(""); // Reset the search query
     setHostels(allHostels); // Reset to show all hostels
