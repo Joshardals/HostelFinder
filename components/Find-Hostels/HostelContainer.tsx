@@ -131,7 +131,7 @@ export function Hostelcontainer() {
     return () => {
       clearTimeout(timeoutId); // Cleanup the timeout on unmount
       setFiltering(false); // Ensure filtering is reset on unmount
-    };
+    };  
   }, [
     location,
     minSelected,
